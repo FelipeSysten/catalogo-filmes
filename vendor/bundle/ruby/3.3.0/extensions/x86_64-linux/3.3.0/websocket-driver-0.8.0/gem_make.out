@@ -1,0 +1,18 @@
+current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+/home/systen/.rbenv/versions/3.3.0/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20251019-12362-p23we2 sitelibdir\=./.gem.20251019-12362-p23we2 clean
+
+current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20251019-12362-p23we2 sitelibdir\=./.gem.20251019-12362-p23we2
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20251019-12362-p23we2 sitelibdir\=./.gem.20251019-12362-p23we2 install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20251019-12362-p23we2
+
+current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20251019-12362-p23we2 sitelibdir\=./.gem.20251019-12362-p23we2 clean

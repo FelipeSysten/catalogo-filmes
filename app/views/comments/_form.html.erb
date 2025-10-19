@@ -1,0 +1,31 @@
+<h3>Adicionar um Comentário</h3>
+
+<%= form_with(model: [movie, comment], local: true) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> proibiram este comentário de ser salvo:</h2>
+      <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content, "Seu Comentário" %>
+    <%= form.text_area :content, placeholder: "Escreva seu comentário aqui...", rows: 4 %>
+  </div>
+
+  <% unless current_user %>
+    <div class="field">
+      <%= form.label :name, "Seu Nome" %>
+      <%= form.text_field :name, placeholder: "Seu nome (para comentários anônimos)" %>
+      <small>Opcional para usuários não logados.</small>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Publicar Comentário" %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+
+<h1>Catálogo de Filmes teste</h1>
+
+<div class="movies-grid">
+  <% @movies.each do |movie| %>
+    <div class="movie-card">
+      <h2><%= link_to movie.title, movie_path(movie) %></h2>
+      <p>Ano: <%= movie.release_year %></p>
+      <p>Diretor: <%= movie.director %></p>
+      <p><%= truncate(movie.synopsis, length: 150) %></p>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @movies %> <%# Se estiver usando Kaminari %>
