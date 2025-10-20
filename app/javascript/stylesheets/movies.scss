@@ -1,0 +1,362 @@
+// app/assets/stylesheets/movies.scss
+// Inclua este arquivo no seu application.scss com `@import 'movies';`
+
+// Estilos globais básicos para o corpo (se não estiverem em outro lugar)
+body {
+    background-color: #1a1a1a; // Fundo escuro geral
+    color: #f0f0f0; // Cor de texto clara padrão
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; // Fonte similar à do exemplo
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; // Garante que padding e border são incluídos na largura/altura
+  }
+  
+  // ===================================
+  // Seção do Cabeçalho e Filtros
+  // ===================================
+  .catalog-hero-section {
+    background-color: #000; // Fundo preto para a seção hero
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 40px; // Espaço entre o hero e o grid de filmes
+  
+    h1 {
+      font-size: 2.8em;
+      color: #fff;
+      margin-bottom: 30px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+  
+    .search-bar-container {
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+      position: relative;
+  
+      .search-input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 1px solid #333;
+        border-radius: 5px;
+        background-color: #222;
+        color: #f0f0f0;
+        font-size: 1.1em;
+        box-sizing: border-box; // Inclui padding e border na largura total
+  
+        &::placeholder {
+          color: #888;
+        }
+  
+        &:focus {
+          outline: none;
+          border-color: #555;
+        }
+      }
+    }
+  
+    .filters-container {
+      display: flex;
+      flex-wrap: wrap; // Permite que os filtros quebrem linha
+      justify-content: center;
+      gap: 20px; // Espaço entre os grupos de filtros
+      max-width: 1000px;
+      margin: 0 auto;
+  
+      .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 10px; // Espaço entre label e input/select
+  
+        label {
+          color: #ccc;
+          font-size: 0.95em;
+          cursor: pointer;
+          white-space: nowrap; // Evita quebra de linha em labels
+        }
+  
+        .filter-select {
+          padding: 8px 12px;
+          border: 1px solid #444;
+          border-radius: 4px;
+          background-color: #333;
+          color: #f0f0f0;
+          font-size: 0.9em;
+          appearance: none; // Remove a seta padrão do select
+          background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ccc%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-5.4H18.6c-5.4%200-10.7%202-13.2%205.4-4.8%205.2-4.8%2013.3%200%2018.5l128%20128a17.6%2017.6%200%200%200%2025.4%200l128-128c4.8-5.2%204.8-13.3%200-18.5z%22%2F%3E%3C%2Fsvg%3E'); // Seta personalizada
+          background-repeat: no-repeat;
+          background-position: right 8px top 50%;
+          background-size: 12px auto;
+          padding-right: 30px; // Espaço para a seta
+          cursor: pointer;
+  
+          &:focus {
+            outline: none;
+            border-color: #007bff;
+          }
+        }
+  
+        input[type="checkbox"] {
+          appearance: none; // Oculta o checkbox padrão
+          width: 18px;
+          height: 18px;
+          border: 1px solid #777;
+          border-radius: 3px;
+          background-color: #444;
+          display: inline-block;
+          vertical-align: middle;
+          cursor: pointer;
+          position: relative;
+          margin-right: 5px;
+  
+          &:checked {
+            background-color: #007bff; // Cor de seleção azul
+            border-color: #007bff;
+  
+            &::after {
+              content: '✔'; // Ícone de check
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              color: #fff;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // ===================================
+  // Grid de Filmes
+  // ===================================
+  .movies-grid-container {
+    max-width: 1200px; // Largura máxima do grid
+    margin: 0 auto; // Centraliza o grid
+    padding: 0 20px; // Padding nas laterais para não colar nas bordas
+  }
+  
+  .movies-grid {
+    display: grid;
+    // Colunas responsivas: mínimo 280px por card, preenche o espaço disponível
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px; // Espaço entre os cards
+    padding-bottom: 40px; // Espaço antes da paginação
+  }
+  
+  .movie-card {
+    background-color: #1e1e1e; // Fundo mais escuro para o card
+    border-radius: 8px;
+    overflow: hidden; // Garante que a imagem siga o border-radius
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); // Sombra para profundidade
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; // Animação ao passar o mouse
+    display: flex;
+    flex-direction: column; // Conteúdo empilhado verticalmente
+  
+    &:hover {
+      transform: translateY(-5px); // Leve levantamento ao passar o mouse
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6); // Sombra mais forte
+    }
+  
+    .movie-poster {
+      width: 100%;
+      height: 420px; // Altura fixa para manter proporção de pôster (aprox. 2:3 para 280px de largura)
+      object-fit: cover; // Corta a imagem para preencher o espaço sem distorcer
+      display: block; // Remove espaço extra abaixo da imagem
+      border-bottom: 1px solid #333; // Linha sutil abaixo do pôster
+    }
+  
+    .movie-info {
+      padding: 15px;
+      flex-grow: 1; // Permite que esta seção ocupe o espaço restante
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; // Empurra o botão para o fundo
+    }
+  
+    .movie-title {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none; // Remove sublinhado do link
+      margin-bottom: 10px;
+      display: block; // Garante que o link ocupe toda a largura do título
+      line-height: 1.3;
+  
+      &:hover {
+        color: #007bff; // Cor de destaque ao passar o mouse
+      }
+    }
+  
+    .movie-meta {
+      font-size: 0.9em;
+      color: #aaa;
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+  
+    .button-saiba-mais {
+      display: block; // Transforma o link em um bloco para ocupar a largura
+      width: calc(100% - 20px); // Ajusta a largura para o padding do card
+      margin-top: 15px;
+      padding: 12px 10px;
+      background-color: transparent; // Fundo transparente
+      color: #fff;
+      border: 1px solid #fff; // Borda branca
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.95em;
+      font-weight: 600;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; // Animação no hover
+      box-sizing: border-box; // Inclui padding/border na largura total
+  
+      &:hover {
+        background-color: #007bff; // Fundo azul ao passar o mouse
+        border-color: #007bff;
+        color: #fff;
+      }
+    }
+  }
+  
+  .no-movies-found {
+    grid-column: 1 / -1; // Ocupa toda a largura do grid
+    text-align: center;
+    font-size: 1.2em;
+    color: #ccc;
+    padding: 50px 0;
+  }
+  
+  
+  // ===================================
+  // Paginação (Kaminari)
+  // ===================================
+  .pagination-container {
+    padding: 20px 0 40px 0;
+    text-align: center;
+  
+    .pagination {
+      display: inline-flex; // Alinha os itens da paginação
+      list-style: none; // Remove marcadores de lista
+      padding: 0;
+      margin: 0;
+  
+      > li {
+        margin: 0 5px; // Espaço entre os itens da paginação
+  
+        > a, > span {
+          display: block;
+          padding: 8px 15px;
+          border: 1px solid #444;
+          border-radius: 5px;
+          text-decoration: none;
+          color: #ccc;
+          background-color: #222;
+          transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  
+          &:hover {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+          }
+        }
+  
+        &.current { // Página atual
+          > a, > span {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+          }
+        }
+  
+        &.disabled { // Botões "anterior" e "próximo" desabilitados
+          > a, > span {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  // ===================================
+  // Responsividade (Media Queries)
+  // ===================================
+  
+  @media (max-width: 992px) {
+    .catalog-hero-section {
+      padding: 40px 15px;
+      h1 {
+        font-size: 2.2em;
+      }
+    }
+    .filters-container {
+      flex-direction: column; // Empilha os grupos de filtro
+      align-items: center;
+    }
+    .movies-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // 250px mínimo
+      gap: 20px;
+    }
+    .movie-card .movie-poster {
+      height: 375px; // Ajusta altura para 250px de largura
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .catalog-hero-section {
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    .filters-container {
+       gap: 15px;
+       .filter-group {
+         width: 100%; // Filtros ocupam a largura total
+         justify-content: center;
+         flex-wrap: wrap;
+       }
+       .checkbox-filters {
+         flex-direction: row; // Checkboxes permanecem em linha
+         justify-content: center;
+         gap: 10px;
+       }
+    }
+    .movies-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); // 220px mínimo
+      gap: 15px;
+    }
+    .movie-card .movie-poster {
+      height: 330px; // Ajusta altura para 220px de largura
+    }
+    .movie-card .movie-title {
+      font-size: 1.15em;
+    }
+    .movie-card .movie-meta {
+      font-size: 0.85em;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .catalog-hero-section {
+      padding: 30px 10px;
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+    .movies-grid {
+      grid-template-columns: 1fr; // Uma única coluna em telas muito pequenas
+      max-width: 320px; // Limita a largura do card para melhor aparência
+      margin: 0 auto; // Centraliza o card
+    }
+    .movie-card .movie-poster {
+      height: 480px; // Reajusta altura para card de largura total (320px)
+    }
+    .movie-card .button-saiba-mais {
+      width: 100%; // Botão ocupa a largura total do conteúdo
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }

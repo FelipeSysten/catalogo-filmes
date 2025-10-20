@@ -1,0 +1,53 @@
+/* app/assets/stylesheets/_base.scss */
+
+/* Variáveis (opcional, mas recomendado para consistência) */
+$primary-dark: #1a1a1a; // Fundo geral
+$secondary-dark: #2a2a2a; // Elementos como cards, filtros
+$tertiary-dark: #0f0f0f; // Para seções como o header hero
+$text-light: #f0f0f0;
+$text-gray: #a0a0a0;
+$accent-color: #e50914; // Um vermelho para destaque, tipo Netflix/Vitrine
+$border-color: #444;
+$lighter-border-color: #555;
+
+/* Fontes */
+$font-montserrat: 'Montserrat', sans-serif;
+$font-open-sans: 'Open Sans', sans-serif;
+
+/* Reset básico e estilos globais */
+body {
+  margin: 0;
+  font-family: $font-open-sans;
+  background-color: $primary-dark;
+  color: $text-light;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  color: $text-light;
+  font-family: $font-montserrat;
+}
+
+a {
+  color: $text-light;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

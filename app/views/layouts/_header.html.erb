@@ -1,0 +1,57 @@
+<header class="main-header">
+  <div class="header-content">
+    <%= link_to root_path, class: "header-logo" do %>
+      <%= image_tag "logo_vitrine.png", alt: "Vitrine Filmes" %> <%# Certifique-se de ter esta imagem em app/assets/images/ %>
+    <% end %>
+
+    <nav class="main-nav">
+      <%= link_to "Sobre", "#", class: "nav-link" %>
+      <%= link_to "Filmes", movies_path, class: "nav-link active" %> <%# 'active' para indicar a página atual %>
+      <%# Os links "Assista em Casa", "Sessão Vitrine", "VitrineLab", "Loja" foram removidos daqui %>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-bar-header">
+        <%= form_tag movies_path, method: :get, class: "header-search-form" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Buscar...", class: "header-search-input" %>
+          <button type="submit" class="header-search-button"><i class="fas fa-search"></i></button>
+        <% end %>
+      </div>
+      <div class="social-icons">
+        <a href="#"  rel="noopener noreferrer" class="header-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"  rel="noopener noreferrer" class="header-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#"  rel="noopener noreferrer" class="header-icon"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="user-actions">
+        <% if user_signed_in? %> <%# Assume Devise ou método similar para verificar se o usuário está logado %>
+          <%= link_to user_account_path, class: "header-icon", title: "Minha Conta" do %> <%# Substitua 'user_account_path' pela sua rota de perfil do usuário %>
+            <i class="fas fa-user-circle"></i>
+          <% end %>
+          <%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "header-link" %> <%# Substitua 'destroy_user_session_path' pela sua rota de logout %>
+        <% else %>
+          <%= link_to "Entrar", new_user_session_path, class: "header-link" %> <%# Substitua 'new_user_session_path' pela sua rota de login %>
+        <% end %>
+        <select class="lang-select">
+            <option value="pt">PT</option>
+            <option value="en">EN</option>
+        </select>
+      </div>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
+  </div>
+
+  <nav class="mobile-nav">
+    <ul>
+      <li><%= link_to "Sobre", "#", class: "nav-link" %></li>
+      <li><%= link_to "Filmes", movies_path, class: "nav-link active" %></li>
+      <%# Os links "Assista em Casa", "Sessão Vitrine", "VitrineLab", "Loja" foram removidos daqui %>
+      <li><%= link_to "Buscar", "#", class: "nav-link" %><i class="fas fa-search"></i></li>
+      <% if user_signed_in? %> <%# Lógica para o menu mobile quando o usuário está logado %>
+        <li><%= link_to "Minha Conta", user_account_path, class: "nav-link" %><i class="fas fa-user-circle"></i></li> <%# Substitua 'user_account_path' pela sua rota de perfil do usuário %>
+        <li><%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %><i class="fas fa-sign-out-alt"></i></li> <%# Substitua 'destroy_user_session_path' pela sua rota de logout %>
+      <% else %> <%# Lógica para o menu mobile quando o usuário não está logado %>
+        <li><%= link_to "Entrar", new_user_session_path, class: "nav-link" %><i class="fas fa-sign-in-alt"></i></li> <%# Substitua 'new_user_session_path' pela sua rota de login %>
+      <% end %>
+    </ul>
+  </nav>
+</header>

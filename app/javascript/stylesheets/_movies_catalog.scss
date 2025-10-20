@@ -1,0 +1,395 @@
+/* app/assets/stylesheets/_movies_catalog.scss */
+@import 'base'; // Importa variáveis e estilos globais
+
+/* --- Catalog Page Specific Styles --- */
+.catalog-page-wrapper {
+  @extend .container;
+}
+
+.catalog-hero-section {
+  text-align: center;
+  padding: 80px 20px 40px;
+  background-color: $primary-dark;
+  margin-bottom: 40px;
+
+  h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+
+.full-search-filter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-bar-container {
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  background-color: $secondary-dark;
+  color: $text-light;
+  &::placeholder {
+    color: $text-gray;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($accent-color, 0.5);
+  }
+}
+
+.filters-container {
+  display: flex;
+  flex-wrap: wrap; // Permite que os filtros quebrem linha em telas menores
+  justify-content: center;
+  gap: 25px; // Espaçamento entre os grupos de filtros
+  margin-bottom: 40px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; // Alinha label e select à esquerda
+  label {
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: $text-light;
+    font-size: 0.95em;
+    font-family: $font-montserrat;
+  }
+}
+
+.filter-select {
+  padding: 10px 15px;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background-color: $secondary-dark;
+  color: $text-light;
+  font-size: 1em;
+  min-width: 180px;
+  cursor: pointer;
+  appearance: none; // Remove o estilo padrão do SO para select
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f0f0f0'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+
+  &:focus {
+    outline: none;
+    border-color: $accent-color;
+    box-shadow: 0 0 0 2px rgba($accent-color, 0.3);
+  }
+}
+
+.checkbox-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 25px; // Espaçamento entre os checkboxes
+  align-items: center;
+
+  .checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 0.9em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: $text-light;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: $secondary-dark;
+      border: 1px solid $border-color;
+      border-radius: 3px;
+    }
+
+    &:hover input ~ .checkmark {
+      background-color: $lighter-border-color;
+    }
+
+    input:checked ~ .checkmark {
+      background-color: $accent-color;
+      border-color: $accent-color;
+    }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+
+.button-apply-filters {
+  background-color: $accent-color;
+  color: $text-light;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: $font-montserrat;
+
+  &:hover {
+    background-color: darken($accent-color, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+/* --- Grid de Filmes --- */
+.movies-grid-container {
+  padding: 20px 0;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // 3 colunas padrão, responsivo
+  gap: 30px;
+}
+
+.movie-card {
+  background-color: $secondary-dark;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.movie-poster {
+  width: 100%;
+  height: 420px; // Altura fixa para manter o aspecto
+  object-fit: cover;
+  display: block;
+}
+
+.movie-info {
+  padding: 15px 20px;
+  flex-grow: 1; // Permite que o info ocupe o espaço restante
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block; // Garante que o link ocupe toda a largura
+  line-height: 1.2;
+  font-family: $font-montserrat;
+}
+
+.movie-meta {
+  font-size: 0.9em;
+  color: $text-gray;
+  margin-bottom: 5px;
+  &:last-of-type { // Para a info do diretor
+    margin-bottom: 15px;
+  }
+}
+
+.button-saiba-mais {
+  display: inline-block;
+  background-color: transparent; // Um cinza mais suave para o botão
+  color: $text-light;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  margin-top: auto; // Empurra o botão para a parte inferior do card
+  border: 1px solid $text-light;
+  font-family: $font-montserrat;
+
+  &:hover {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    color: $text-light;
+  }
+
+  &.button-large {
+    width: auto;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    margin-top: 20px; // Espaçamento para o botão de cadastrar
+    background-color: $accent-color;
+    border-color: $accent-color;
+
+    &:hover {
+      background-color: darken($accent-color, 10%);
+      border-color: darken($accent-color, 10%);
+    }
+  }
+}
+
+.no-movies-found {
+  grid-column: 1 / -1; // Ocupa toda a largura do grid
+  text-align: center;
+  font-size: 1.2em;
+  color: $text-gray;
+  padding: 50px 0;
+}
+
+/* --- Paginação --- */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  margin-top: 20px;
+}
+
+.pagination { // Estilo padrão Kaminari, se estiver usando
+  a, em, span {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    color: $text-light;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover:not(.current) {
+      background-color: $secondary-dark;
+    }
+  }
+
+  .current {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    font-weight: 700;
+  }
+
+  .gap {
+    color: $text-gray;
+  }
+}
+
+.add-movie-section {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+  .catalog-hero-section h1 {
+    font-size: 2.5em;
+  }
+
+  .filters-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .filter-group {
+    width: 100%; // Ocupa a largura total para melhor alinhamento
+    align-items: center;
+  }
+  .filter-select {
+    width: 100%;
+    max-width: 300px; // Limita o tamanho do select em telas menores
+  }
+
+  .checkbox-filters {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalog-hero-section {
+    padding: 60px 15px 30px;
+  }
+  .catalog-hero-section h1 {
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+  .movies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .movie-poster {
+    height: 380px;
+  }
+  .movie-title {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalog-hero-section h1 {
+    font-size: 1.8em;
+  }
+  .search-input {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
+  .movies-grid {
+    grid-template-columns: 1fr; // Uma coluna em telas muito pequenas
+  }
+  .movie-poster {
+    height: auto; // Permite que a altura se ajuste com a largura
+  }
+}

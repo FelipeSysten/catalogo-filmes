@@ -1,15 +1,81 @@
+<div class="catalog-page-wrapper">
 
-<h1>Catálogo de Filmes teste</h1>
+  <!-- Seção do Cabeçalho e Busca/Filtros -->
+  <div class="catalog-hero-section">
+    <h1>EXPLORE NOSSO CATÁLOGO DE FILMES</h1>
 
-<div class="movies-grid">
-  <% @movies.each do |movie| %>
-    <div class="movie-card">
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <p>Ano: <%= movie.release_year %></p>
-      <p>Diretor: <%= movie.director %></p>
-      <p><%= truncate(movie.synopsis, length: 150) %></p>
+    <%# Centraliza todo o formulário de busca/filtro aqui para que todos os campos submetam juntos %>
+    <%= form_tag movies_path, method: :get, class: "full-search-filter-form" do %>
+
+      <div class="search-bar-container">
+        <%= text_field_tag :search, params[:search], placeholder: "Buscar por Título, Diretor, Elenco...", class: "search-input" %>
+        <%# Removido o submit button visível aqui, a busca pode ser trigada por JS no 'change' ou via o botão de "Aplicar Filtros" %>
+      </div>
+
+      <div class="filters-container">
+        <div class="filter-group">
+          <label for="genre-filter">Filtrar por gênero</label>
+          <%= select_tag :genre, options_for_select([["Todos", ""]] + (defined?(Genre) ? Genre.all.map { |g| [g.name, g.id] } : [["Ação", "action"], ["Drama", "drama"], ["Ficção Científica", "scifi"], ["Comédia", "comedy"]]), params[:genre]), class: "filter-select", id: "genre-filter" %>
+          <%# A lógica para Genre.all.map assume que você tem um modelo Genre. Caso contrário, use as opções estáticas. %>
+        </div>
+
+        <div class="filter-group">
+          <label for="year-filter">Filtrar por ano</label>
+          <%= select_tag :year, options_for_select([["Todos", ""]] + (Time.now.year).downto(1900).map { |y| [y, y] }, params[:year]), class: "filter-select", id: "year-filter" %>
+        </div>
+
+        
+        <%= submit_tag "Aplicar Filtros", class: "button-apply-filters" %>
+      </div>
+
+    <% end %> <%# Fim do form_tag %>
+  </div>
+
+  <!-- Seção do Grid de Filmes -->
+  <div class="movies-grid-container">
+    <div class="movies-grid">
+      <% if @movies.any? %>
+        <% @movies.each do |movie| %>
+          <div class="movie-card">
+            <%= link_to movie_path(movie) do %>
+              <% if movie.respond_to?(:poster_url) && movie.poster_url.present? %>
+                <%= image_tag movie.poster_url, alt: movie.title, class: "movie-poster" %>
+              <% else %>
+                <%# Certifique-se de ter uma imagem 'placeholder_poster.png' em app/assets/images/ %>
+                <%= image_tag "placeholder_poster.png", alt: "Placeholder Poster", class: "movie-poster" %>
+              <% end %>
+            <% end %>
+            <div class="movie-info">
+              <%= link_to movie.title, movie_path(movie), class: "movie-title" %>
+              <p class="movie-meta">
+                <% genres = movie.respond_to?(:genres) && movie.genres.any? ? movie.genres.map(&:name).join(', ') : "Drama / Ficção" %>
+                <%= genres %>
+                <%= " / #{movie.release_year}" if movie.release_year.present? %>
+                <%= " / #{movie.respond_to?(:country) && movie.country.present? ? movie.country : 'Brasil'}" %>
+              </p>
+              <p class="movie-meta">
+                Direção: <%= movie.respond_to?(:director) && movie.director.present? ? movie.director : 'Não informado' %>
+              </p>
+              <%= link_to "SAIBA MAIS", movie_path(movie), class: "button-saiba-mais" %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="no-movies-found">Nenhum filme encontrado com os critérios de busca.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Paginação -->
+  <div class="pagination-container">
+    <%= paginate @movies if defined?(paginate) %> <%# Protege se Kaminari não estiver ativo ou @movies não for paginável %>
+  </div>
+
+  <%# Link para o novo filme %>
+  <% if user_signed_in? %>
+    <div class="add-movie-section">
+      <%= link_to 'Cadastrar Novo Filme', new_movie_path, class: 'button-saiba-mais button-large' %>
     </div>
   <% end %>
-</div>
 
-<%= paginate @movies %> <%# Se estiver usando Kaminari %>
+</div> <%# Fim do catalog-page-wrapper %>

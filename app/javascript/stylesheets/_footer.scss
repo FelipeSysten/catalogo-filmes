@@ -1,0 +1,263 @@
+/* app/assets/stylesheets/_header_footer.scss */
+@import 'base'; // Importa variáveis e estilos globais
+
+/* --- Header Global --- */
+.main-header {
+  background-color: $tertiary-dark;
+  padding: 15px 0;
+  border-bottom: 1px solid $border-color;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  @extend .container; // Reutiliza a largura e padding do container
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; // Permite quebra de linha em telas pequenas
+}
+
+.header-logo {
+  img {
+    height: 35px; // Ajuste conforme o tamanho do seu logo
+    width: auto;
+  }
+}
+
+.main-nav {
+  margin: 0 20px; // Espaçamento em desktop
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  .nav-link {
+    margin: 0 15px;
+    font-family: $font-montserrat;
+    font-weight: 600;
+    font-size: 0.95em;
+    position: relative;
+    padding-bottom: 5px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: $accent-color;
+      transition: width 0.3s ease-out;
+    }
+    &:hover::after, &.active::after {
+      width: 100%;
+    }
+    &.active {
+      color: $accent-color;
+    }
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-bar-header {
+  display: flex;
+  align-items: center;
+  background-color: $secondary-dark;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .header-search-input {
+    border: none;
+    background: transparent;
+    padding: 8px 10px;
+    color: $text-light;
+    outline: none;
+    width: 120px; /* Tamanho inicial */
+    transition: width 0.3s ease;
+
+    &::placeholder {
+      color: $text-gray;
+    }
+    &:focus {
+      width: 180px; // Expande ao focar
+    }
+  }
+  .header-search-button {
+    background: transparent;
+    border: none;
+    color: $text-gray;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 1em;
+    &:hover {
+      color: $text-light;
+    }
+  }
+}
+
+.social-icons {
+  .header-icon {
+    margin-left: 10px;
+    font-size: 1.1em;
+    color: $text-gray;
+    &:hover {
+      color: $text-light;
+    }
+  }
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .header-icon i {
+    font-size: 1.5em;
+    color: $text-gray;
+    &:hover {
+      color: $text-light;
+    }
+  }
+}
+
+.lang-select {
+  background-color: $tertiary-dark;
+  color: $text-light;
+  border: 1px solid $border-color;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: $font-open-sans;
+  appearance: none; // Remove o estilo padrão do SO
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f0f0f0'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+  padding-right: 25px;
+}
+
+.menu-toggle {
+    display: none; /* Escondido por padrão em desktop */
+    background: none;
+    border: none;
+    color: $text-light;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none; /* Escondido por padrão */
+    background-color: $tertiary-dark;
+    border-top: 1px solid $border-color;
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+    padding-bottom: 20px;
+
+    &.active {
+        display: block;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .nav-link {
+        font-family: $font-montserrat;
+        font-weight: 600;
+        font-size: 1.1em;
+        padding: 10px 0;
+        display: block;
+        width: 100%;
+        text-align: center;
+        &:hover {
+            background-color: $secondary-dark;
+        }
+    }
+}
+
+
+/* --- Footer Global --- */
+.main-footer {
+  background-color: $tertiary-dark;
+  color: $text-gray;
+  padding: 30px 0;
+  text-align: center;
+  margin-top: 60px;
+  border-top: 1px solid $border-color;
+}
+
+.footer-content {
+  @extend .container;
+  p {
+    margin-bottom: 15px;
+  }
+}
+
+.footer-nav {
+  .footer-link {
+    margin: 0 15px;
+    color: $text-gray;
+    &:hover {
+      color: $text-light;
+    }
+  }
+}
+
+// Media Queries para Header/Footer
+@media (max-width: 1024px) {
+  .header-content {
+    justify-content: center;
+    gap: 15px;
+  }
+  .main-nav {
+    display: none; /* Esconde nav principal em telas menores */
+  }
+  .header-actions {
+    flex-grow: 1; /* Permite que as ações ocupem espaço */
+    justify-content: flex-end; /* Alinha à direita */
+    gap: 10px;
+  }
+  .search-bar-header .header-search-input {
+    width: 80px;
+    &:focus {
+      width: 150px;
+    }
+  }
+  .social-icons {
+    display: none; /* Pode esconder ícones sociais para economizar espaço */
+  }
+  .menu-toggle {
+    display: block; /* Mostra o ícone de hambúrguer */
+    order: 1; /* Posiciona o toggle no início */
+    margin-right: auto; /* Empurra os outros elementos para a direita */
+  }
+  .header-logo {
+    order: 2;
+  }
+  .header-actions {
+    order: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-wrap: nowrap; /* Não quebra linha no header principal */
+    justify-content: space-between;
+  }
+  .header-actions {
+    display: none; /* Esconde todas as ações em mobile para focar no menu hamburger */
+  }
+  .header-logo img {
+    height: 30px;
+  }
+}
