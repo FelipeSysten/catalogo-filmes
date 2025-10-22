@@ -1,5 +1,4 @@
-/* app/assets/stylesheets/_header_footer.scss */
-@import 'base'; // Importa variáveis e estilos globais
+@use 'base' as *; 
 
 /* --- Header Global --- */
 .main-header {

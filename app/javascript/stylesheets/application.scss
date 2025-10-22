@@ -1,4 +1,4 @@
-@import './_base.scss';           /* Assumindo que base.css está no mesmo diretório */
-@import './_footer.scss';
-@import './_movies_catalog.scss';
-@import './movies.scss';
+@use './_base.scss' as *; 
+@use './_footer.scss';
+@use './_movies_catalog.scss';
+@use './movies.scss';

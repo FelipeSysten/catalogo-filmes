@@ -1,5 +1,5 @@
-/* app/assets/stylesheets/_movies_catalog.scss */
-@import 'base'; // Importa variáveis e estilos globais
+@use 'sass:color';
+@use './_base.scss' as *;
 
 /* --- Catalog Page Specific Styles --- */
 .catalog-page-wrapper {
@@ -179,7 +179,7 @@
   font-family: $font-montserrat;
 
   &:hover {
-    background-color: darken($accent-color, 10%);
+    background-color: color.adjust($accent-color, $lightness: -10%);
     transform: translateY(-2px);
   }
 }
@@ -272,9 +272,8 @@
     border-color: $accent-color;
 
     &:hover {
-      background-color: darken($accent-color, 10%);
-      border-color: darken($accent-color, 10%);
-    }
+      background-color: color.adjust($accent-color, $lightness: -10%);
+      border-color: color.adjust($accent-color, $lightness: -10%);
   }
 }
 
@@ -392,4 +391,5 @@
   .movie-poster {
     height: auto; // Permite que a altura se ajuste com a largura
   }
+}
 }
