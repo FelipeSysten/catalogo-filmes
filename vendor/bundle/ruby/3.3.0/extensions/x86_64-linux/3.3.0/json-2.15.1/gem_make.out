@@ -10,16 +10,16 @@ checking for cpuid.h... yes
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/json-2.15.1/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-v8sr9u sitelibdir\=./.gem.20251019-12362-v8sr9u clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-olpfya sitelibdir\=./.gem.20251022-31579-olpfya clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/json-2.15.1/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-v8sr9u sitelibdir\=./.gem.20251019-12362-v8sr9u
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-olpfya sitelibdir\=./.gem.20251022-31579-olpfya
 compiling parser.c
 linking shared-object json/ext/parser.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/json-2.15.1/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-v8sr9u sitelibdir\=./.gem.20251019-12362-v8sr9u install
-/usr/bin/install -c -m 0755 parser.so ./.gem.20251019-12362-v8sr9u/json/ext
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-olpfya sitelibdir\=./.gem.20251022-31579-olpfya install
+/usr/bin/install -c -m 0755 parser.so ./.gem.20251022-31579-olpfya/json/ext
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/json-2.15.1/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-v8sr9u sitelibdir\=./.gem.20251019-12362-v8sr9u clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-olpfya sitelibdir\=./.gem.20251022-31579-olpfya clean

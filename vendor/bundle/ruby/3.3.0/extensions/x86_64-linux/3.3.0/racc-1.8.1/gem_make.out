@@ -3,16 +3,16 @@ current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/racc-1.8.1/ext/racc/cparse
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-2a28td sitelibdir\=./.gem.20251019-12362-2a28td clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-sa2vxk sitelibdir\=./.gem.20251022-31579-sa2vxk clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/racc-1.8.1/ext/racc/cparse
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-2a28td sitelibdir\=./.gem.20251019-12362-2a28td
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-sa2vxk sitelibdir\=./.gem.20251022-31579-sa2vxk
 compiling cparse.c
 linking shared-object racc/cparse.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/racc-1.8.1/ext/racc/cparse
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-2a28td sitelibdir\=./.gem.20251019-12362-2a28td install
-/usr/bin/install -c -m 0755 cparse.so ./.gem.20251019-12362-2a28td/racc
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-sa2vxk sitelibdir\=./.gem.20251022-31579-sa2vxk install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20251022-31579-sa2vxk/racc
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/racc-1.8.1/ext/racc/cparse
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-2a28td sitelibdir\=./.gem.20251019-12362-2a28td clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-sa2vxk sitelibdir\=./.gem.20251022-31579-sa2vxk clean

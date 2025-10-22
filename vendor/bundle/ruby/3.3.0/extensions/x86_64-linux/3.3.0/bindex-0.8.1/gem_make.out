@@ -3,16 +3,16 @@ current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-2rfvdx sitelibdir\=./.gem.20251019-12362-2rfvdx clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-9qvuua sitelibdir\=./.gem.20251022-31579-9qvuua clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-2rfvdx sitelibdir\=./.gem.20251019-12362-2rfvdx
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-9qvuua sitelibdir\=./.gem.20251022-31579-9qvuua
 compiling cruby.c
 linking shared-object skiptrace/internal/cruby.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-2rfvdx sitelibdir\=./.gem.20251019-12362-2rfvdx install
-/usr/bin/install -c -m 0755 cruby.so ./.gem.20251019-12362-2rfvdx/skiptrace/internal
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-9qvuua sitelibdir\=./.gem.20251022-31579-9qvuua install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20251022-31579-9qvuua/skiptrace/internal
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-2rfvdx sitelibdir\=./.gem.20251019-12362-2rfvdx clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-9qvuua sitelibdir\=./.gem.20251022-31579-9qvuua clean

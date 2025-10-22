@@ -16,16 +16,16 @@ checking for ttyname_r()... yes
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/io-console-0.8.1/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-3jbl2e sitelibdir\=./.gem.20251019-12362-3jbl2e clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-jushqm sitelibdir\=./.gem.20251022-31579-jushqm clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/io-console-0.8.1/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-3jbl2e sitelibdir\=./.gem.20251019-12362-3jbl2e
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-jushqm sitelibdir\=./.gem.20251022-31579-jushqm
 compiling console.c
 linking shared-object io/console.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/io-console-0.8.1/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-3jbl2e sitelibdir\=./.gem.20251019-12362-3jbl2e install
-/usr/bin/install -c -m 0755 console.so ./.gem.20251019-12362-3jbl2e/io
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-jushqm sitelibdir\=./.gem.20251022-31579-jushqm install
+/usr/bin/install -c -m 0755 console.so ./.gem.20251022-31579-jushqm/io
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/io-console-0.8.1/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-3jbl2e sitelibdir\=./.gem.20251019-12362-3jbl2e clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-jushqm sitelibdir\=./.gem.20251022-31579-jushqm clean

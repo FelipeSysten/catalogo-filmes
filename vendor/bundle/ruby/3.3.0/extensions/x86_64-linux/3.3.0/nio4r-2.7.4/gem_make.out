@@ -13,10 +13,10 @@ checking for sys/resource.h... yes
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/nio4r-2.7.4/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-t9iuom sitelibdir\=./.gem.20251019-12362-t9iuom clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-ztrkii sitelibdir\=./.gem.20251022-31579-ztrkii clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/nio4r-2.7.4/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-t9iuom sitelibdir\=./.gem.20251019-12362-t9iuom
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-ztrkii sitelibdir\=./.gem.20251022-31579-ztrkii
 compiling bytebuffer.c
 compiling monitor.c
 compiling nio4r_ext.c
@@ -228,8 +228,8 @@ compiling selector.c
 linking shared-object nio4r_ext.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/nio4r-2.7.4/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-t9iuom sitelibdir\=./.gem.20251019-12362-t9iuom install
-/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20251019-12362-t9iuom
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-ztrkii sitelibdir\=./.gem.20251022-31579-ztrkii install
+/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20251022-31579-ztrkii
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/nio4r-2.7.4/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-t9iuom sitelibdir\=./.gem.20251019-12362-t9iuom clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-ztrkii sitelibdir\=./.gem.20251022-31579-ztrkii clean

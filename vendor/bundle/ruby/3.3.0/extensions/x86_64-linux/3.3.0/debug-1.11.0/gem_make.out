@@ -3,17 +3,17 @@ current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/debug-1.11.0/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-gq4idd sitelibdir\=./.gem.20251019-12362-gq4idd clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-mjzjko sitelibdir\=./.gem.20251022-31579-mjzjko clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/debug-1.11.0/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-gq4idd sitelibdir\=./.gem.20251019-12362-gq4idd
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-mjzjko sitelibdir\=./.gem.20251022-31579-mjzjko
 compiling debug.c
 compiling iseq_collector.c
 linking shared-object debug/debug.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/debug-1.11.0/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-gq4idd sitelibdir\=./.gem.20251019-12362-gq4idd install
-/usr/bin/install -c -m 0755 debug.so ./.gem.20251019-12362-gq4idd/debug
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-mjzjko sitelibdir\=./.gem.20251022-31579-mjzjko install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20251022-31579-mjzjko/debug
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/debug-1.11.0/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-gq4idd sitelibdir\=./.gem.20251019-12362-gq4idd clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-mjzjko sitelibdir\=./.gem.20251022-31579-mjzjko clean

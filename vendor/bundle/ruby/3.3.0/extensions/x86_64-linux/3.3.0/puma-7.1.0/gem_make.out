@@ -25,18 +25,18 @@ checking for SSL_get1_peer_certificate() in openssl/ssl.h... yes
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/puma-7.1.0/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-fvazs6 sitelibdir\=./.gem.20251019-12362-fvazs6 clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-a8bwrh sitelibdir\=./.gem.20251022-31579-a8bwrh clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/puma-7.1.0/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-fvazs6 sitelibdir\=./.gem.20251019-12362-fvazs6
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-a8bwrh sitelibdir\=./.gem.20251022-31579-a8bwrh
 compiling http11_parser.c
 compiling mini_ssl.c
 compiling puma_http11.c
 linking shared-object puma/puma_http11.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/puma-7.1.0/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-fvazs6 sitelibdir\=./.gem.20251019-12362-fvazs6 install
-/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20251019-12362-fvazs6/puma
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-a8bwrh sitelibdir\=./.gem.20251022-31579-a8bwrh install
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20251022-31579-a8bwrh/puma
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/puma-7.1.0/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-fvazs6 sitelibdir\=./.gem.20251019-12362-fvazs6 clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-a8bwrh sitelibdir\=./.gem.20251022-31579-a8bwrh clean

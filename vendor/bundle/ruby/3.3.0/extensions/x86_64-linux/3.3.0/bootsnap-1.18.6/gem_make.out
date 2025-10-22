@@ -7,16 +7,16 @@ checking for whether -std=c99 is accepted as CFLAGS... no
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.6/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-do63uu sitelibdir\=./.gem.20251019-12362-do63uu clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-q3r0cf sitelibdir\=./.gem.20251022-31579-q3r0cf clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.6/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-do63uu sitelibdir\=./.gem.20251019-12362-do63uu
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-q3r0cf sitelibdir\=./.gem.20251022-31579-q3r0cf
 compiling bootsnap.c
 linking shared-object bootsnap/bootsnap.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.6/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-do63uu sitelibdir\=./.gem.20251019-12362-do63uu install
-/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20251019-12362-do63uu/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-q3r0cf sitelibdir\=./.gem.20251022-31579-q3r0cf install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20251022-31579-q3r0cf/bootsnap
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.6/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-do63uu sitelibdir\=./.gem.20251019-12362-do63uu clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-q3r0cf sitelibdir\=./.gem.20251022-31579-q3r0cf clean

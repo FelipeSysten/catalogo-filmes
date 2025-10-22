@@ -22,17 +22,17 @@ checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... yes
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-w3sf6o sitelibdir\=./.gem.20251019-12362-w3sf6o clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-qu3loq sitelibdir\=./.gem.20251022-31579-qu3loq clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-w3sf6o sitelibdir\=./.gem.20251019-12362-w3sf6o
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-qu3loq sitelibdir\=./.gem.20251022-31579-qu3loq
 compiling bigdecimal.c
 compiling missing.c
 linking shared-object bigdecimal.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-w3sf6o sitelibdir\=./.gem.20251019-12362-w3sf6o install
-/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20251019-12362-w3sf6o
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-qu3loq sitelibdir\=./.gem.20251022-31579-qu3loq install
+/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20251022-31579-qu3loq
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-w3sf6o sitelibdir\=./.gem.20251019-12362-w3sf6o clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-qu3loq sitelibdir\=./.gem.20251022-31579-qu3loq clean

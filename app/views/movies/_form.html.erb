@@ -1,43 +1,73 @@
 
-<%= form_with(model: movie) do |form| %>
+<%= form_with(model: movie, local: true, multipart: true) do |form| %>
   <% if movie.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(movie.errors.count, "erro") %> impediu este filme de ser salvo:</h2>
-
+    <div id="error_explanation">
+      <h2><%= pluralize(movie.errors.count, "error") %> proibiu este filme de ser salvo:</h2>
       <ul>
-        <% movie.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, "Título", style: "display: block" %>
+  <div class="field">
+    <%= form.label :title, "Título" %>
     <%= form.text_field :title %>
   </div>
 
-  <div>
-    <%= form.label :synopsis, "Sinopse", style: "display: block" %>
+  <div class="field">
+    <%= form.label :synopsis, "Sinopse" %>
     <%= form.text_area :synopsis %>
   </div>
 
-  <div>
-    <%= form.label :release_year, "Ano de Lançamento", style: "display: block" %>
+  <div class="field">
+    <%= form.label :release_year, "Ano de Lançamento" %>
     <%= form.number_field :release_year %>
   </div>
 
-  <div>
-    <%= form.label :duration, "Duração (minutos)", style: "display: block" %>
+  <div class="field">
+    <%= form.label :duration, "Duração (minutos)" %>
     <%= form.number_field :duration %>
   </div>
 
-  <div>
-    <%= form.label :director, "Diretor", style: "display: block" %>
+  <div class="field">
+    <%= form.label :director, "Diretor" %>
     <%= form.text_field :director %>
   </div>
 
-  <div>
-    <%= form.submit "Salvar Filme" %>
+  <div class="field">
+  <%= form.label :cast, "Elenco" %>
+  <%= form.text_area :cast %> <%# Ou text_field se for mais curto %>
+</div>
+
+  <%# Campo de upload de imagem para o poster %>
+  <div class="field">
+    <%= form.label :poster, "Poster do Filme" %>
+    <%= form.file_field :poster, accept: 'image/png,image/jpeg,image/jpg' %>
+
+    <%# Opcional: Exibir o poster atual se for um formulário de edição %>
+    <% if movie.poster.attached? && movie.persisted? %>
+  <p>Poster Atual:</p>
+  <%= image_tag movie.poster.variant(resize_to_limit: [150, 225]), class: "current-poster-preview" %>
+  <%# O variant será explicado no Passo 6. É para exibir uma versão menor para preview. %>
+<% end %>
+  </div>
+
+  <%# Se você tiver gêneros, o código para selecioná-los pode vir aqui %>
+  <% if defined?(Genre) && Genre.any? %>
+    <div class="field">
+      <%= form.label :genre_ids, "Gêneros" %>
+      <%= form.collection_check_boxes :genre_ids, Genre.all, :id, :name do |cb| %>
+        <div>
+          <%= cb.check_box %>
+          <%= cb.label %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Salvar Filme", class: "button" %>
   </div>
 <% end %>

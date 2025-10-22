@@ -4,16 +4,16 @@ checking for rb_ext_ractor_safe() in ruby.h... yes
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/erb-5.1.1/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-a5hom0 sitelibdir\=./.gem.20251019-12362-a5hom0 clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-k0qicq sitelibdir\=./.gem.20251022-31579-k0qicq clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/erb-5.1.1/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-a5hom0 sitelibdir\=./.gem.20251019-12362-a5hom0
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-k0qicq sitelibdir\=./.gem.20251022-31579-k0qicq
 compiling escape.c
 linking shared-object erb/escape.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/erb-5.1.1/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-a5hom0 sitelibdir\=./.gem.20251019-12362-a5hom0 install
-/usr/bin/install -c -m 0755 escape.so ./.gem.20251019-12362-a5hom0/erb
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-k0qicq sitelibdir\=./.gem.20251022-31579-k0qicq install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20251022-31579-k0qicq/erb
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/erb-5.1.1/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-a5hom0 sitelibdir\=./.gem.20251019-12362-a5hom0 clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-k0qicq sitelibdir\=./.gem.20251022-31579-k0qicq clean

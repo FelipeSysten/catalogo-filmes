@@ -3,10 +3,10 @@ current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.
 creating Makefile
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bcrypt_pbkdf-1.1.1/ext/mri
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-43emo7 sitelibdir\=./.gem.20251019-12362-43emo7 clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-gky5oi sitelibdir\=./.gem.20251022-31579-gky5oi clean
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bcrypt_pbkdf-1.1.1/ext/mri
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-43emo7 sitelibdir\=./.gem.20251019-12362-43emo7
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-gky5oi sitelibdir\=./.gem.20251022-31579-gky5oi
 compiling bcrypt_pbkdf.c
 bcrypt_pbkdf.c: In function ‘bcrypt_hash’:
 bcrypt_pbkdf.c:61:13: warning: initializer-string for array of ‘unsigned char’ truncates NUL terminator but destination lacks ‘nonstring’ attribute (33 chars into 32 available) [-Wunterminated-string-initialization]
@@ -23,8 +23,8 @@ compiling hash_sha512.c
 linking shared-object bcrypt_pbkdf_ext.so
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bcrypt_pbkdf-1.1.1/ext/mri
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-43emo7 sitelibdir\=./.gem.20251019-12362-43emo7 install
-/usr/bin/install -c -m 0755 bcrypt_pbkdf_ext.so ./.gem.20251019-12362-43emo7
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-gky5oi sitelibdir\=./.gem.20251022-31579-gky5oi install
+/usr/bin/install -c -m 0755 bcrypt_pbkdf_ext.so ./.gem.20251022-31579-gky5oi
 
 current directory: /home/systen/Documentos/catalogo_filmes/vendor/bundle/ruby/3.3.0/gems/bcrypt_pbkdf-1.1.1/ext/mri
-make DESTDIR\= sitearchdir\=./.gem.20251019-12362-43emo7 sitelibdir\=./.gem.20251019-12362-43emo7 clean
+make DESTDIR\= sitearchdir\=./.gem.20251022-31579-gky5oi sitelibdir\=./.gem.20251022-31579-gky5oi clean

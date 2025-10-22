@@ -33,37 +33,40 @@
 
   <!-- Seção do Grid de Filmes -->
   <div class="movies-grid-container">
-    <div class="movies-grid">
-      <% if @movies.any? %>
-        <% @movies.each do |movie| %>
-          <div class="movie-card">
-            <%= link_to movie_path(movie) do %>
-              <% if movie.respond_to?(:poster_url) && movie.poster_url.present? %>
-                <%= image_tag movie.poster_url, alt: movie.title, class: "movie-poster" %>
-              <% else %>
-                <%# Certifique-se de ter uma imagem 'placeholder_poster.png' em app/assets/images/ %>
-                <%= image_tag "placeholder_poster.png", alt: "Placeholder Poster", class: "movie-poster" %>
-              <% end %>
-            <% end %>
-            <div class="movie-info">
-              <%= link_to movie.title, movie_path(movie), class: "movie-title" %>
-              <p class="movie-meta">
-                <% genres = movie.respond_to?(:genres) && movie.genres.any? ? movie.genres.map(&:name).join(', ') : "Drama / Ficção" %>
-                <%= genres %>
-                <%= " / #{movie.release_year}" if movie.release_year.present? %>
-                <%= " / #{movie.respond_to?(:country) && movie.country.present? ? movie.country : 'Brasil'}" %>
-              </p>
-              <p class="movie-meta">
-                Direção: <%= movie.respond_to?(:director) && movie.director.present? ? movie.director : 'Não informado' %>
-              </p>
-              <%= link_to "SAIBA MAIS", movie_path(movie), class: "button-saiba-mais" %>
-            </div>
-          </div>
+  <div class="movies-grid">
+  <% if @movies.any? %>
+    <% @movies.each do |movie| %>
+      <div class="movie-card">
+        <%= link_to movie_path(movie) do %>
+          <% if movie.poster.attached? %> <%# <-- Nova verificação com Active Storage %>
+            <%# Usamos um 'variant' para redimensionar a imagem para o catálogo, melhorando a performance %>
+            <%# (A função 'variant' precisa da gem 'image_processing' instalada - ver Passo 6) %>
+            <%= image_tag movie.poster.variant(resize_to_limit: [300, 450]), alt: movie.title, class: "movie-poster" %>
+          <% else %>
+            <%# Certifique-se de ter uma imagem 'placeholder_poster.png' em app/assets/images/ %>
+            <%= image_tag "placeholder_poster.png", alt: "Placeholder Poster", class: "movie-poster" %>
+          <% end %>
         <% end %>
-      <% else %>
-        <p class="no-movies-found">Nenhum filme encontrado com os critérios de busca.</p>
-      <% end %>
-    </div>
+        <div class="movie-info">
+          <%= link_to movie.title, movie_path(movie), class: "movie-title" %>
+          <p class="movie-meta">
+            <% genres = movie.respond_to?(:genres) && movie.genres.any? ? movie.genres.map(&:name).join(', ') : "Gênero não informado" %>
+            <%= genres %>
+            <%= " / #{movie.release_year}" if movie.release_year.present? %>
+            <%# A linha abaixo assume que você tem um atributo 'country' no seu modelo Movie. %>
+            <%= " / #{movie.respond_to?(:country) && movie.country.present? ? movie.country : 'País não informado'}" if movie.respond_to?(:country) %>
+          </p>
+          <p class="movie-meta">
+            Direção: <%= movie.respond_to?(:director) && movie.director.present? ? movie.director : 'Não informado' %>
+          </p>
+          <%= link_to "SAIBA MAIS", movie_path(movie), class: "button-saiba-mais" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="no-movies-found">Nenhum filme encontrado com os critérios de busca.</p>
+  <% end %>
+</div>
   </div>
 
   <!-- Paginação -->
