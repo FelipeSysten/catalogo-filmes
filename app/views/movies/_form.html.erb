@@ -1,8 +1,7 @@
-
-<%= form_with(model: movie, local: true, multipart: true) do |form| %>
+<%= form_with(model: movie, local: true, class: "movie-form") do |form| %>
   <% if movie.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(movie.errors.count, "error") %> proibiu este filme de ser salvo:</h2>
+    <div id="error_explanation" class="form-errors">
+      <h2><%= pluralize(movie.errors.count, "erro") %> impediu este filme de ser salvo:</h2>
       <ul>
         <% movie.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,63 +10,60 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title, "Título" %>
-    <%= form.text_field :title %>
+  <div class="field-group">
+    <%= form.label :title, "Título:", class: "form-label" %>
+    <%= form.text_field :title, class: "form-input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :synopsis, "Sinopse" %>
-    <%= form.text_area :synopsis %>
+  <div class="field-group">
+    <%= form.label :synopsis, "Sinopse:", class: "form-label" %>
+    <%= form.text_area :synopsis, class: "form-textarea" %>
   </div>
 
-  <div class="field">
-    <%= form.label :release_year, "Ano de Lançamento" %>
-    <%= form.number_field :release_year %>
+  <div class="field-group">
+    <%= form.label :release_year, "Ano de Lançamento:", class: "form-label" %>
+    <%= form.number_field :release_year, class: "form-input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :duration, "Duração (minutos)" %>
-    <%= form.number_field :duration %>
+  <div class="field-group">
+    <%= form.label :duration, "Duração (minutos):", class: "form-label" %>
+    <%= form.number_field :duration, class: "form-input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :director, "Diretor" %>
-    <%= form.text_field :director %>
+  <div class="field-group">
+    <%= form.label :director, "Diretor:", class: "form-label" %>
+    <%= form.text_field :director, class: "form-input" %>
   </div>
 
-  <div class="field">
-  <%= form.label :cast, "Elenco" %>
-  <%= form.text_area :cast %> <%# Ou text_field se for mais curto %>
-</div>
-
-  <%# Campo de upload de imagem para o poster %>
-  <div class="field">
-    <%= form.label :poster, "Poster do Filme" %>
-    <%= form.file_field :poster, accept: 'image/png,image/jpeg,image/jpg' %>
-
-    <%# Opcional: Exibir o poster atual se for um formulário de edição %>
-    <% if movie.poster.attached? && movie.persisted? %>
-  <p>Poster Atual:</p>
-  <%= image_tag movie.poster.variant(resize_to_limit: [150, 225]), class: "current-poster-preview" %>
-  <%# O variant será explicado no Passo 6. É para exibir uma versão menor para preview. %>
-<% end %>
+  <div class="field-group">
+    <%= form.label :cast, "Elenco:", class: "form-label" %>
+    <%= form.text_area :cast, class: "form-textarea" %>
   </div>
 
-  <%# Se você tiver gêneros, o código para selecioná-los pode vir aqui %>
-  <% if defined?(Genre) && Genre.any? %>
-    <div class="field">
-      <%= form.label :genre_ids, "Gêneros" %>
-      <%= form.collection_check_boxes :genre_ids, Genre.all, :id, :name do |cb| %>
-        <div>
-          <%= cb.check_box %>
-          <%= cb.label %>
+  <div class="field-group">
+    <%= form.label :poster, "Pôster:", class: "form-label" %>
+    <%= form.file_field :poster, class: "form-input" %>
+    <% if movie.poster.attached? %>
+      <div class="current-poster-preview">
+        <%= image_tag movie.poster.variant(resize_to_limit: [150, 225]), class: "poster-preview-image" %>
+        <span class="poster-filename"><%= movie.poster.filename %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field-group">
+    <%= form.label :genre_ids, "Gêneros:", class: "form-label" %>
+    <div class="genres-checkbox-group">
+      <%= form.collection_check_boxes :genre_ids, Genre.all, :id, :name do |b| %>
+        <div class="checkbox-item">
+          <%= b.check_box class: "genre-checkbox" %>
+          <%= b.label class: "genre-label" %>
         </div>
       <% end %>
     </div>
-  <% end %>
+  </div>
 
   <div class="actions">
-    <%= form.submit "Salvar Filme", class: "button" %>
+    <%= form.submit "Salvar Filme", class: "submit-button" %>
   </div>
 <% end %>

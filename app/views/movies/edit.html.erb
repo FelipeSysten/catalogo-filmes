@@ -1,9 +1,14 @@
 
-<h1>Editando Filme</h1>
 
-<%= render "form", movie: @movie %>
+<div class="movie-form-page-container">
+  <div class="movie-form-content-wrapper">
+    <h1 class="page-title">Editando Filme</h1>
 
-<div>
-  <%= link_to "Ver este filme", @movie %> |
-  <%= link_to "Voltar para filmes", movies_path %>
+    <%= render "form", movie: @movie %>
+
+    <div class="back-link-container">
+      <%= link_to "Ver este filme", @movie, class: "back-button" %>
+      <%= link_to "Voltar para filmes", movies_path, class: "back-button" %>
+    </div>
+  </div>
 </div>

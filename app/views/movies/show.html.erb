@@ -1,80 +1,87 @@
-<p style="color: green"><%= notice %></p>
-
-<%# Adicione esta seção para exibir o poster do filme %>
-<div class="movie-poster-container">
-  <% if @movie.poster.attached? %>
-    <%# Usamos um 'variant' para redimensionar a imagem, melhorando a performance. %>
-    <%# O tamanho [600, 900] é um exemplo; ajuste conforme o design da sua página. %>
-    <%= image_tag @movie.poster.variant(resize_to_limit: [600, 900]),
-                  alt: @movie.title,
-                  class: "movie-detail-poster",
-                  style: "max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;" %>
-  <% else %>
-    <%# Se não houver poster, exibe uma imagem placeholder. %>
-    <%# Certifique-se de ter uma imagem 'placeholder_poster.png' em app/assets/images/ %>
-    <div class="placeholder-poster" style="max-width: 600px; height: 900px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #888; border: 1px dashed #ddd; border-radius: 8px; margin-bottom: 20px;">
-      <p>Poster Indisponível</p>
-    </div>
+<div class="container movie-detail-page">
+  <% if notice.present? %>
+    <p class="notice"><%= notice %></p>
   <% end %>
-</div>
 
-
-<h1><%= @movie.title %></h1>
-
-<p>
-  <strong>Sinopse:</strong>
-  <%= @movie.synopsis %>
-</p>
-
-<p>
-  <strong>Ano de Lançamento:</strong>
-  <%= @movie.release_year %>
-</p>
-
-<p>
-  <strong>Duração:</strong>
-  <%= @movie.duration %> minutos
-</p>
-
-<p>
-  <strong>Diretor:</strong>
-  <%= @movie.director %>
-</p>
-
-<% if @movie.user == current_user %>
-  <div>
-    <%= link_to "Editar este filme", edit_movie_path(@movie), class: "button button-edit" %> |
-    <%= button_to "Apagar este filme", @movie, method: :delete, data: { turbo_confirm: "Tem certeza que deseja apagar este filme?" }, class: "button button-delete" %>
+  <div class="movie-header">
+    <h1 class="movie-title"><%= @movie.title %></h1>
   </div>
-<% end %>
 
-<div>
-  <%= link_to "Voltar para filmes", movies_path, class: "button button-back" %>
-</div>
+  <div class="movie-content-grid">
+    <div class="movie-poster-column">
+      <% if @movie.poster.attached? %>
+        <%= image_tag @movie.poster.variant(resize_to_limit: [400, 600]),
+                      alt: @movie.title,
+                      class: "movie-detail-poster" %>
+      <% else %>
+        <div class="placeholder-poster">
+          <p>Poster Indisponível</p>
+        </div>
+      <% end %>
+    </div>
 
-<hr>
-
-
-<h2>Comentários</h2>
-
-<% if @comments.any? %>
-  <div id="comments">
-    <% @comments.each do |comment| %>
-      <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
-        <p>
-          <strong><%= comment.user ? comment.user.email : comment.name %></strong>
-          <small><%= time_ago_in_words(comment.created_at) %> atrás</small>
+    <div class="movie-info-column">
+      <p class="movie-meta-item">
+        <strong>Sinopse:</strong>
+        <span class="movie-synopsis"><%= @movie.synopsis %></span>
+      </p>
+      <p class="movie-meta-item">
+        <strong>Ano de Lançamento:</strong> <%= @movie.release_year %>
+      </p>
+      <p class="movie-meta-item">
+        <strong>Duração:</strong> <%= @movie.duration %> minutos
+      </p>
+      <p class="movie-meta-item">
+        <strong>Diretor:</strong> <%= @movie.director %>
+      </p>
+      <p class="movie-meta-item">
+        <strong>Elenco:</strong>
+        <span class="movie-cast"><%= @movie.cast %></span>
+      </p>
+      <% if @movie.genres.any? %>
+        <p class="movie-meta-item">
+          <strong>Gêneros:</strong>
+          <span class="movie-genres"><%= @movie.genres.map(&:name).join(', ') %></span>
         </p>
-        <p><%= comment.content %></p>
-        <% if comment.user == current_user %>
-          <%= button_to "Apagar", movie_comment_path(@movie, comment), method: :delete, data: { turbo_confirm: "Tem certeza que deseja apagar este comentário?" }, style: "color: red; background: none; border: none; cursor: pointer; padding: 0;" %>
+      <% end %>
+
+
+      <div class="movie-actions">
+        <% if @movie.user == current_user %>
+          <%= link_to "Editar este filme", edit_movie_path(@movie), class: "button button-primary" %>
+          <%= button_to "Apagar este filme", @movie, method: :delete, data: { turbo_confirm: "Tem certeza que deseja apagar este filme?" }, class: "button button-danger" %>
+        <% end %>
+        <%= link_to "Voltar para filmes", movies_path, class: "button button-secondary" %>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="comments-section">
+    <h2>Comentários</h2>
+
+    <% if @comments.any? %>
+      <div id="comments-list">
+        <% @comments.each do |comment| %>
+          <div class="comment-card">
+            <p class="comment-meta">
+              <strong><%= comment.user ? comment.user.email : comment.name %></strong>
+              <small><%= time_ago_in_words(comment.created_at) %> atrás</small>
+            </p>
+            <p class="comment-content"><%= comment.content %></p>
+            <% if comment.user == current_user %>
+              <%= button_to "Apagar", movie_comment_path(@movie, comment), method: :delete, data: { turbo_confirm: "Tem certeza que deseja apagar este comentário?" }, class: "button button-link-danger" %>
+            <% end %>
+          </div>
         <% end %>
       </div>
+    <% else %>
+      <p class="no-comments-message">Nenhum comentário ainda. Seja o primeiro a comentar!</p>
     <% end %>
-  </div>
-<% else %>
-  <p>Nenhum comentário ainda. Seja o primeiro a comentar!</p>
-<% end %>
 
-<%# Renderiza o formulário de comentários %>
-<%= render 'comments/form', movie: @movie, comment: @comment %>
+    <div class="comment-form-container">
+      <%= render 'comments/form', movie: @movie, comment: @comment %>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,5 @@
-// app/assets/stylesheets/movies.scss
-// Inclua este arquivo no seu application.scss com `@import 'movies';`
+@use "sass:color";
 
-// Estilos globais básicos para o corpo (se não estiverem em outro lugar)
 body {
     background-color: #1a1a1a; // Fundo escuro geral
     color: #f0f0f0; // Cor de texto clara padrão
@@ -360,3 +358,343 @@ body {
       margin-right: 0;
     }
   }
+
+  // app/assets/stylesheets/movies.scss
+
+// Variáveis de cores para consistência
+$dark-bg: #1a1a1a;
+$light-text: #f0f0f0;
+$gray-text: #ccc;
+$medium-gray: #333;
+$border-color: #444;
+
+$primary-color: #007bff; // Azul para botões principais
+$danger-color: #dc3545; // Vermelho para apagar
+$secondary-color: #6c757d; // Cinza para botões secundários
+
+body {
+  background-color: $dark-bg;
+  color: $light-text;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; // Usar uma fonte sans-serif moderna
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: color.adjust($primary-color, $lightness: 10%);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.notice {
+  background-color: #28a745; 
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.movie-detail-page {
+  padding-top: 40px;
+
+  .movie-header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    .movie-title {
+      font-size: 2.8em;
+      color: $light-text;
+      margin-bottom: 15px;
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .movie-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; // Poster na esquerda, info na direita
+    gap: 50px; // Espaçamento entre colunas
+    margin-bottom: 50px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr; // Coluna única em telas menores
+      text-align: center;
+    }
+
+    .movie-poster-column {
+      display: flex;
+      justify-content: center; // Centraliza o poster
+      align-items: flex-start; // Alinha o topo na coluna
+
+      .movie-detail-poster {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+
+      .placeholder-poster {
+        width: 400px; // Dimensões para o placeholder
+        height: 600px;
+        background-color: $medium-gray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $gray-text;
+        border: 2px dashed $border-color;
+        border-radius: 12px;
+        font-size: 1.2em;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+        @media (max-width: 992px) {
+          width: 80%;
+          height: auto;
+          aspect-ratio: 2 / 3; // Mantém proporção para responsive
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .movie-info-column {
+      padding-top: 20px;
+
+      @media (max-width: 992px) {
+        padding-top: 30px;
+      }
+
+      .movie-meta-item {
+        margin-bottom: 20px;
+        font-size: 1.1em;
+        color: $gray-text;
+
+        strong {
+          color: $light-text;
+          display: block; // Título negrito em sua própria linha ou bloco
+          margin-bottom: 5px;
+          font-size: 1.2em;
+        }
+
+        .movie-synopsis,
+        .movie-cast,
+        .movie-genres {
+          display: block; // Garante que a sinopse/elenco/gêneros quebre a linha
+        }
+      }
+
+      .movie-actions {
+        margin-top: 40px;
+        display: flex;
+        gap: 15px; // Espaçamento entre botões
+        flex-wrap: wrap; // Quebra linha se não houver espaço
+
+        @media (max-width: 992px) {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    text-align: center;
+
+    &-primary {
+      background-color: $primary-color;
+      color: white;
+      &:hover {
+        background-color: color.adjust($primary-color, $lightness: -10%);
+        transform: translateY(-2px);
+      }
+    }
+
+    &-danger {
+      background-color: $danger-color;
+      color: white;
+      &:hover {
+        background-color: color.adjust($danger-color, $lightness: -10%);
+        transform: translateY(-2px);
+      }
+    }
+
+    &-secondary {
+      background-color: $secondary-color;
+      color: white;
+      &:hover {
+        background-color: color.adjust($secondary-color, $lightness: -10%);
+        transform: translateY(-2px);
+      }
+    }
+
+    &-link-danger { // Para o botão de apagar comentário
+      background: none;
+      color: $danger-color;
+      padding: 5px 10px;
+      font-size: 0.9em;
+      &:hover {
+        text-decoration: underline;
+        color: color.adjust($danger-color, $lightness: -10%);
+      }
+    }
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid $border-color;
+    margin: 60px 0;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .comments-section {
+    margin-top: 60px;
+
+    h2 {
+      font-size: 2em;
+      color: $light-text;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    #comments-list {
+      margin-top: 30px;
+      max-width: 800px; // Limita a largura dos comentários
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .comment-card {
+      background-color: $medium-gray;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      position: relative; // Para posicionar o botão de apagar se necessário
+
+      .comment-meta {
+        font-size: 0.95em;
+        color: $gray-text;
+        margin-bottom: 10px;
+
+        strong {
+          color: $light-text;
+          margin-right: 8px;
+        }
+
+        small {
+          color: color.adjust($danger-color, $lightness: -10%);
+        }
+      }
+
+      .comment-content {
+        font-size: 1.05em;
+        color: $light-text;
+        margin-bottom: 15px;
+      }
+
+      .button-link-danger { // Sobrescreve para que o botão fique no canto do card
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 5px 10px;
+      }
+    }
+
+    .no-comments-message {
+      text-align: center;
+      color: $gray-text;
+      font-style: italic;
+      font-size: 1.1em;
+      padding: 30px 0;
+      border: 1px dashed $border-color;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 30px auto;
+    }
+
+    .comment-form-container {
+      margin-top: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 30px;
+      background-color: $medium-gray;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// Estilos básicos para o formulário de comentários (se não estiverem em comments.scss)
+// Supondo que 'comments/_form.html.erb' tem campos como `<label for="comment_content">Content</label>` e `<textarea id="comment_content">`
+form {
+  .field {
+    margin-bottom: 20px;
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: $light-text;
+      font-size: 1.1em;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: calc(100% - 20px);
+      padding: 12px;
+      border: 1px solid $border-color;
+      border-radius: 6px;
+      background-color: #2b2b2b;
+      color: $light-text;
+      font-size: 1em;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.3);
+        outline: none;
+      }
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+  }
+
+  .actions {
+    margin-top: 30px;
+    input[type="submit"] {
+      @extend .button; // Reusa estilos do botão
+      @extend .button-primary;
+      width: auto;
+      padding: 12px 30px;
+      border: none;
+      font-size: 1.1em;
+    }
+  }
+}

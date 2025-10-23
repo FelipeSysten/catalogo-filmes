@@ -1,0 +1,496 @@
+/* app/assets/stylesheets/custom.scss */
+
+// Importa o módulo de cores do Sass para usar funções como color.adjust
+@use "sass:color";
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', 'Lato', sans-serif; /* Usar fontes limpas como no site de referência */
+  background-color: #000; /* Fundo preto para todo o corpo */
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* --- Layout da Página de Formulário --- */
+.movie-form-page-container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: flex-start; /* Alinha o conteúdo ao topo, ou 'center' para o meio da tela */
+  min-height: 100vh; /* Garante que o container ocupa a altura total da viewport */
+  padding: 40px 20px; /* Padding superior/inferior e lateral */
+  box-sizing: border-box; /* Inclui padding na altura/largura total */
+}
+
+.movie-form-content-wrapper {
+  background-color: #1a1a1a; /* Um tom um pouco mais claro para o bloco do formulário */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra sutil para profundidade */
+  max-width: 700px; /* Limita a largura do formulário */
+  width: 100%;
+  text-align: center; /* Centraliza o título */
+}
+
+.page-title {
+  font-size: 2.8em;
+  color: #ffffff;
+  margin-bottom: 45px;
+  font-weight: 700; /* Negrito para o título */
+  text-transform: uppercase; /* Opcional, para um toque mais "cinemático" */
+  letter-spacing: 1px;
+}
+
+/* --- Estilos do Formulário --- */
+.movie-form {
+  text-align: left; /* Alinha os campos à esquerda dentro do formulário */
+}
+
+.field-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  display: block; /* Garante que o label ocupa a linha inteira */
+  color: #e0e0e0;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  font-weight: 600; /* Um pouco mais de negrito para os labels */
+}
+
+.form-input,
+.form-textarea {
+  width: calc(100% - 24px); /* 100% menos o padding */
+  padding: 12px;
+  background-color: #2a2a2a; /* Fundo escuro para os inputs */
+  border: 1px solid #444444;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  resize: vertical; /* Permite redimensionar textareas verticalmente */
+  font-family: inherit; /* Garante que a fonte dos inputs seja a mesma do body */
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #007bff; /* Cor de destaque ao focar */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Um leve brilho */
+}
+
+.form-textarea {
+  min-height: 120px; /* Altura mínima para o campo de descrição */
+}
+
+.current-poster-preview {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #2a2a2a;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+}
+
+.poster-preview-image {
+  border-radius: 4px;
+  border: 1px solid #555;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.poster-filename {
+  font-size: 0.9em;
+  color: #bbb;
+}
+
+.genres-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  background-color: #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    background-color: #3a3a3a;
+    border-color: #666;
+  }
+}
+
+.genre-checkbox {
+  margin-right: 8px;
+  accent-color: #007bff; /* Cor do checkbox */
+  cursor: pointer;
+}
+
+.genre-label {
+  color: #ffffff;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+/* --- Botão de Envio --- */
+.actions {
+  margin-top: 40px;
+  text-align: center; /* Centraliza o botão de envio */
+}
+
+.submit-button {
+  background-color: #ffffff; /* Fundo branco para o botão */
+  color: #000000; /* Texto preto */
+  padding: 15px 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 200px;
+}
+
+.submit-button:hover {
+  background-color: color.adjust(#ffffff, $lightness: -5%); /* Levemente cinza no hover, usando color.adjust */
+  color: #333333;
+  transform: translateY(-2px); /* Efeito sutil de levantar */
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  background-color: color.adjust(#ffffff, $lightness: -10%); /* Cor mais escura ao clicar, usando color.adjust */
+}
+
+/* --- Link "Voltar" --- */
+.back-link-container {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.back-button {
+  color: #aaaaaa; /* Cor cinza sutil para o link */
+  text-decoration: none;
+  font-size: 1em;
+  padding: 10px 15px;
+  border: 1px solid #444444;
+  border-radius: 6px;
+  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  display: inline-block; /* Permite padding e borda */
+}
+
+.back-button:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #2a2a2a;
+}
+
+/* --- Estilos para Mensagens de Erro --- */
+.form-errors {
+  background-color: #ffcccc;
+  color: #cc0000;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border: 1px solid #cc0000;
+}
+
+.form-errors h2 {
+  font-size: 1.2em;
+  margin-top: 0;
+  color: #cc0000;
+}
+
+.form-errors ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.form-errors li {
+  margin-bottom: 5px;
+}
+
+.user-actions {
+    display: flex; /* Para alinhar itens como o ícone, botão e select */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 15px; /* Espaçamento entre os itens */
+}
+
+/* Estilos do ícone de usuário (se você já tiver, mantenha-os) */
+.header-icon {
+    color: #fff; /* Cor do ícone, ajuste conforme seu tema */
+    font-size: 1.5em; /* Tamanho do ícone */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transição suave na cor */
+}
+
+.header-icon:hover {
+    color: #e74c3c; /* Cor vermelha no hover para o ícone, se desejar */
+}
+
+/* Estilos para os botões de autenticação (Entrar/Sair) */
+.user-auth-button {
+    display: inline-block; /* Permite padding e margens horizontais */
+    padding: 8px 15px; /* Espaçamento interno para parecer um botão */
+    border: 1px solid #555; /* Borda sutil */
+    border-radius: 5px; /* Cantos arredondados */
+    background-color: #333; /* Fundo escuro padrão */
+    color: #fff; /* Texto branco */
+    text-decoration: none; /* Remove sublinhado */
+    font-weight: bold; /* Texto em negrito */
+    font-size: 0.9em; /* Ajuste o tamanho da fonte se necessário */
+    cursor: pointer; /* Indica que é clicável */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave para o hover */
+    white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+}
+
+/* Efeito hover para os botões de autenticação */
+.user-auth-button:hover {
+    background-color: #e74c3c; /* Vermelho no hover */
+    border-color: #c0392b; /* Borda vermelha mais escura no hover */
+    color: #fff; /* Garante que o texto permaneça branco */
+}
+
+/* Estilos para o seletor de idioma */
+.lang-select {
+    background-color: #333; /* Fundo escuro */
+    color: #fff; /* Texto branco */
+    border: 1px solid #555; /* Borda sutil */
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    appearance: none; /* Remove estilos padrão do navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Adicione um ícone de seta customizado se quiser, usando background-image */
+}
+
+.lang-select:focus {
+    outline: none; /* Remove a borda de foco padrão */
+    border-color: #e74c3c; /* Borda vermelha no foco, se desejar */
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', 'Lato', sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+  }
+  
+  // Estilos para containers de formulário (reutilizados)
+  .movie-form-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+  }
+  
+  .movie-form-content-wrapper {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .page-title {
+    font-size: 2.8em;
+    color: #ffffff;
+    margin-bottom: 45px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .movie-form {
+    text-align: left;
+  }
+  
+  .field-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-label {
+    display: block;
+    color: #e0e0e0;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  .form-input,
+  .form-textarea {
+    width: calc(100% - 24px);
+    padding: 12px;
+    background-color: #2a2a2a;
+    border: 1px solid #444444;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical;
+    font-family: inherit;
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+  }
+  
+  .form-textarea {
+    min-height: 120px;
+  }
+  
+  /* NOVO: Estilo para o campo de dica de senha */
+  .form-hint {
+    color: #bbb;
+    font-size: 0.9em;
+    margin-left: 5px;
+  }
+  
+  
+  .actions {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .submit-button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 200px;
+  }
+  
+  .submit-button:hover {
+    background-color: color.adjust(#ffffff, $lightness: -5%);
+    color: #333333;
+    transform: translateY(-2px);
+  }
+  
+  .submit-button:active {
+    transform: translateY(0);
+    background-color: color.adjust(#ffffff, $lightness: -10%);
+  }
+  
+  .back-link-container {
+    margin-top: 35px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .back-button {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 10px 15px;
+    border: 1px solid #444444;
+    border-radius: 6px;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    display: inline-block;
+  }
+  
+  .back-button:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    background-color: #2a2a2a;
+  }
+  
+  /* Estilos de erros (reutilizados) */
+  .form-errors {
+    background-color: #ffcccc;
+    color: #cc0000;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #cc0000;
+    text-align: left;
+  }
+  
+  .form-errors h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+    color: #cc0000;
+  }
+  
+  .form-errors ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  
+  .form-errors li {
+    margin-bottom: 5px;
+  }
+  
+  /* NOVO: Estilos para o checkbox "Lembrar de mim" (reutiliza classes de gêneros) */
+  .checkbox-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; // Centraliza o checkbox com o label
+    margin-bottom: 25px; // Espaçamento abaixo do checkbox
+    // Reutiliza classes de estilos de checkbox de gêneros
+    .genre-checkbox {
+      margin-right: 8px;
+      accent-color: #007bff;
+      cursor: pointer;
+    }
+    .genre-label {
+      color: #ffffff;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  }
+  
+  /* NOVO: Estilos para os links adicionais do Devise */
+  .additional-links {
+    margin-top: 25px; // Espaço acima dos links
+    display: flex;
+    flex-direction: column; // Coloca os links um abaixo do outro
+    gap: 10px; // Espaço entre os links
+  }
+  
+  .devise-links {
+      // Container para os links de recuperação de senha, registro, etc.
+      // Pode ter um text-align: center se quiser centralizar os links
+  }
+  
+  .devise-link {
+    color: #007bff; // Cor de link padrão
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+  
+    &:hover {
+      color: color.adjust(#007bff, $lightness: 10%); // Cor mais clara no hover
+      text-decoration: underline;
+    }
+  }
+  
