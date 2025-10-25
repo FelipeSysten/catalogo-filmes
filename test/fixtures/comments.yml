@@ -1,13 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# test/fixtures/comments.yml (Exemplo CORRIGIDO)
+comment_one:
+  name: "Comentarista Anonimo" # Para comentários anônimos
+  content: "Excelente filme, muito bom!"
+  movie: movie_o_senhor_dos_aneis # <-- Referência ao label do filme em movies.yml
+  # user: # Deixe em branco ou não inclua para comentários anônimos
 
-one:
-  name: MyString
-  content: MyText
-  movie: one
-  user: one
-
-two:
-  name: MyString
-  content: MyText
-  movie: two
-  user: two
+comment_two:
+  content: "Amei a atuação!"
+  movie: movie_a_origem # <-- Referência ao label do filme em movies.yml
+  user: felipe # <-- Referência ao label do usuário em users.yml

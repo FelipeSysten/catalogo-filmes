@@ -1,17 +1,18 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  title: MyString
-  synopsis: MyText
-  release_year: 1
-  duration: 1
-  director: MyString
+# test/fixtures/movies.yml (Exemplo CORRIGIDO)
+movie_o_senhor_dos_aneis:
+  title: "O Senhor dos Anéis"
+  synopsis: "Um hobbit embarca em uma jornada perigosa."
+  release_year: 2001
+  duration: 178
+  director: "Peter Jackson"
   user: one
+  # ... outros atributos (ex: watch_at_home: true)
 
-two:
-  title: MyString
-  synopsis: MyText
-  release_year: 1
-  duration: 1
-  director: MyString
+movie_a_origem:
+  title: "A Origem"
+  synopsis: "Um ladrão de sonhos."
+  release_year: 2010
+  duration: 148
+  director: "Christopher Nolan"
   user: two
+  # ... outros atributos
