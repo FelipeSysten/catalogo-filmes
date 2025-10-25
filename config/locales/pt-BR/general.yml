@@ -1,0 +1,17 @@
+pt-BR:
+  header:
+    about: "Sobre"
+    movies: "Filmes"
+    watch_at_home: "Assista em Casa"
+    vitrine_session: "Sessão Vitrine"
+    vitrinelab: "VitrineLab"
+    store: "Loja"
+    search: "Buscar"
+    my_account: "Minha Conta"
+    sign_out: "Sair"
+    sign_in: "Entrar"
+    register: "Registrar" 
+    search_placeholder: "Buscar por Título..." 
+    languages:
+      portuguese: "PT"
+      english: "EN"

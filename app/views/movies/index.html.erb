@@ -2,33 +2,45 @@
 
   <!-- Seção do Cabeçalho e Busca/Filtros -->
   <div class="catalog-hero-section">
-    <h1>EXPLORE NOSSO CATÁLOGO DE FILMES</h1>
+    <h1><%= t("movies.index.page_title") %></h1>
 
-    <%# Centraliza todo o formulário de busca/filtro aqui para que todos os campos submetam juntos %>
     <%= form_tag movies_path, method: :get, class: "full-search-filter-form" do %>
 
       <div class="search-bar-container">
-        <%= text_field_tag :search, params[:search], placeholder: "Buscar por Título, Diretor, Elenco...", class: "search-input" %>
-        <%# Removido o submit button visível aqui, a busca pode ser trigada por JS no 'change' ou via o botão de "Aplicar Filtros" %>
+        <%= text_field_tag :search, params[:search], placeholder: t("movies.index.search_placeholder"), class: "search-input" %>
       </div>
 
       <div class="filters-container">
         <div class="filter-group">
-          <label for="genre-filter">Filtrar por gênero</label>
-          <%= select_tag :genre, options_for_select([["Todos", ""]] + (defined?(Genre) ? Genre.all.map { |g| [g.name, g.id] } : [["Ação", "action"], ["Drama", "drama"], ["Ficção Científica", "scifi"], ["Comédia", "comedy"]]), params[:genre]), class: "filter-select", id: "genre-filter" %>
-          <%# A lógica para Genre.all.map assume que você tem um modelo Genre. Caso contrário, use as opções estáticas. %>
+          <label for="genre-filter"><%= t("movies.index.filter_by_genre") %></label>
+          <% # NOTA: Se Genre.all.map { |g| [g.name, g.id] } for usado, g.name virá do banco de dados.
+             # Para traduzir os nomes dos gêneros, você precisaria de um sistema i18n para o modelo Genre (ex: gem Globalize)
+             # ou chaves explícitas para cada nome de gênero no YAML.
+             # Para os gêneros hardcoded (Ação, Drama, etc.), adicionei chaves genéricas como 'genre_action', que precisarão de entrada nos YAML.
+          %>
+          <%= select_tag :genre, options_for_select([
+            [t("movies.index.all"), ""]] +
+            (defined?(Genre) && Genre.all.any? ? Genre.all.map { |g| [g.name, g.id] } :
+            [[t("movies.index.genres.action"), "action"],
+             [t("movies.index.genres.drama"), "drama"],
+             [t("movies.index.genres.scifi"), "scifi"],
+             [t("movies.index.genres.comedy"), "comedy"]]),
+            params[:genre]), class: "filter-select", id: "genre-filter" %>
         </div>
 
         <div class="filter-group">
-          <label for="year-filter">Filtrar por ano</label>
-          <%= select_tag :year, options_for_select([["Todos", ""]] + (Time.now.year).downto(1900).map { |y| [y, y] }, params[:year]), class: "filter-select", id: "year-filter" %>
+          <label for="year-filter"><%= t("movies.index.filter_by_year") %></label>
+          <%= select_tag :year, options_for_select(
+            [[t("movies.index.all"), ""]] +
+            (Time.now.year).downto(1900).map { |y| [y, y] }, 
+            params[:year]
+                      ), class: "filter-select", id: "year-filter" %>
         </div>
 
-        
-        <%= submit_tag "Aplicar Filtros", class: "button-apply-filters" %>
+        <%= submit_tag t("movies.index.apply_filters"), class: "button-apply-filters" %>
       </div>
 
-    <% end %> <%# Fim do form_tag %>
+    <% end %>
   </div>
 
   <!-- Seção do Grid de Filmes -->
@@ -38,33 +50,32 @@
     <% @movies.each do |movie| %>
       <div class="movie-card">
         <%= link_to movie_path(movie) do %>
-          <% if movie.poster.attached? %> <%# <-- Nova verificação com Active Storage %>
-            <%# Usamos um 'variant' para redimensionar a imagem para o catálogo, melhorando a performance %>
-            <%# (A função 'variant' precisa da gem 'image_processing' instalada - ver Passo 6) %>
-            <%= image_tag movie.poster.variant(resize_to_limit: [300, 450]), alt: movie.title, class: "movie-poster" %>
+          <% if movie.poster.attached? %>
+             <%= image_tag movie.poster.variant(resize_to_limit: [300, 450]), alt: movie.title, class: "movie-poster" %>
           <% else %>
-            <%# Certifique-se de ter uma imagem 'placeholder_poster.png' em app/assets/images/ %>
-            <%= image_tag "placeholder_poster.png", alt: "Placeholder Poster", class: "movie-poster" %>
+             <%= image_tag "placeholder_poster.png", alt: "Placeholder Poster", class: "movie-poster" %>
           <% end %>
         <% end %>
         <div class="movie-info">
-          <%= link_to movie.title, movie_path(movie), class: "movie-title" %>
+          <%= link_to movie.title, movie_path(movie), class:"movie-title" %>
           <p class="movie-meta">
-            <% genres = movie.respond_to?(:genres) && movie.genres.any? ? movie.genres.map(&:name).join(', ') : "Gênero não informado" %>
+            <% # A lógica aqui é a mesma: se g.name vem do banco, não é traduzido por I18n.t() automaticamente. %>
+            <% genres = movie.respond_to?(:genres) && movie.genres.any? ? movie.genres.map(&:name).join(', ') : t("movies.index.genre_not_informed") %>
             <%= genres %>
             <%= " / #{movie.release_year}" if movie.release_year.present? %>
-            <%# A linha abaixo assume que você tem um atributo 'country' no seu modelo Movie. %>
-            <%= " / #{movie.respond_to?(:country) && movie.country.present? ? movie.country : 'País não informado'}" if movie.respond_to?(:country) %>
+
+            <% # Certifica-se de que movie.country existe e o traduz se não estiver presente. %>
+            <%= " / #{movie.respond_to?(:country) && movie.country.present? ? movie.country : t('movies.index.country_not_informed')}" if movie.respond_to?(:country) %>
           </p>
           <p class="movie-meta">
-            Direção: <%= movie.respond_to?(:director) && movie.director.present? ? movie.director : 'Não informado' %>
+            <%= t("movies.index.direction_label") %><%= movie.respond_to?(:director) && movie.director.present? ? movie.director : t('movies.index.not_informed') %>
           </p>
-          <%= link_to "SAIBA MAIS", movie_path(movie), class: "button-saiba-mais" %>
+          <%= link_to t("movies.index.learn_more"), movie_path(movie), class:"button-saiba-mais" %>
         </div>
       </div>
     <% end %>
   <% else %>
-    <p class="no-movies-found">Nenhum filme encontrado com os critérios de busca.</p>
+    <p class="no-movies-found"><%= t("movies.index.no_movies_found") %></p>
   <% end %>
 </div>
   </div>
@@ -74,11 +85,10 @@
     <%= paginate @movies if defined?(paginate) %> <%# Protege se Kaminari não estiver ativo ou @movies não for paginável %>
   </div>
 
-  <%# Link para o novo filme %>
-  <% if user_signed_in? %>
+    <% if user_signed_in? %>
     <div class="add-movie-section">
-      <%= link_to 'Cadastrar Novo Filme', new_movie_path, class: 'button-saiba-mais button-large' %>
+      <%= link_to t("movies.index.add_new_movie"), new_movie_path, class: 'button-saiba-mais button-large' %>
     </div>
   <% end %>
 
-</div> <%# Fim do catalog-page-wrapper %>
+</div>

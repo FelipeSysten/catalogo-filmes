@@ -1,0 +1,22 @@
+# config/locales/en/movies.yml
+en:
+  movies:
+    index:
+      page_title: "EXPLORE OUR MOVIE CATALOG"
+      search_placeholder: "Search by Title, Director, Cast..."
+      filter_by_genre: "Filter by genre"
+      filter_by_year: "Filter by year"
+      all: "All"
+      apply_filters: "Apply Filters"
+      genre_not_informed: "Genre not informed"
+      country_not_informed: "Country not informed"
+      direction_label: "Director: "
+      not_informed: "Not informed"
+      learn_more: "LEARN MORE"
+      no_movies_found: "No movies found with the search criteria."
+      add_new_movie: "Register New Movie"
+      genres:           
+        action: "Action"
+        drama: "Drama"
+        scifi: "Science Fiction"
+        comedy: "Comedy"

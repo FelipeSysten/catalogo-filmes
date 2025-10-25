@@ -31,10 +31,14 @@
       <% else %>
         <%= link_to "Entrar", new_user_session_path, class: "user-auth-button" %> <%# Substitua 'new_user_session_path' pela sua rota de login %>
       <% end %>
-      <select class="lang-select">
-          <option value="pt">PT</option>
-          <option value="en">EN</option>
-      </select>
+   <select class="lang-select" onchange="window.location.href = this.value">
+  <option value="<%= url_for(locale: 'pt-BR') %>" <%= 'selected' if I18n.locale.to_s == 'pt-BR' %>>
+    <%= t('header.languages.portuguese') %>
+  </option>
+  <option value="<%= url_for(locale: 'en') %>" <%= 'selected' if I18n.locale.to_s == 'en' %>>
+    <%= t('header.languages.english') %>
+  </option>
+</select>
     </div>
     </div>
     <button class="menu-toggle" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
@@ -44,7 +48,6 @@
     <ul>
       <li><%= link_to "Sobre", "#", class: "nav-link" %></li>
       <li><%= link_to "Filmes", movies_path, class: "nav-link active" %></li>
-      <%# Os links "Assista em Casa", "Sessão Vitrine", "VitrineLab", "Loja" foram removidos daqui %>
       <li><%= link_to "Buscar", "#", class: "nav-link" %><i class="fas fa-search"></i></li>
       <% if user_signed_in? %> <%# Lógica para o menu mobile quando o usuário está logado %>
         <li><%= link_to "Minha Conta", edit_user_registration_path, class: "nav-link" %><i class="fas fa-user-circle"></i></li> <%# Substitua 'user_account_path' pela sua rota de perfil do usuário %>

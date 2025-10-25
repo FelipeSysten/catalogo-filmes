@@ -1,0 +1,22 @@
+# config/locales/pt-BR/movies.yml
+pt-BR:
+  movies:
+    index:
+      page_title: "EXPLORE NOSSO CATÁLOGO DE FILMES"
+      search_placeholder: "Buscar por Título, Diretor, Elenco..."
+      filter_by_genre: "Filtrar por gênero"
+      filter_by_year: "Filtrar por ano"
+      all: "Todos"
+      apply_filters: "Aplicar Filtros"
+      genre_not_informed: "Gênero não informado"
+      country_not_informed: "País não informado"
+      direction_label: "Direção: "
+      not_informed: "Não informado"
+      learn_more: "SAIBA MAIS"
+      no_movies_found: "Nenhum filme encontrado com os critérios de busca."
+      add_new_movie: "Cadastrar Novo Filme"
+      genres:           
+        action: "Ação"
+        drama: "Drama"
+        scifi: "Ficção Científica"
+        comedy: "Comédia"
