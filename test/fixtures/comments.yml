@@ -1,11 +1,12 @@
-# test/fixtures/comments.yml (Exemplo CORRIGIDO)
-comment_one:
-  name: "Comentarista Anonimo" # Para comentários anônimos
-  content: "Excelente filme, muito bom!"
-  movie: movie_o_senhor_dos_aneis # <-- Referência ao label do filme em movies.yml
-  # user: # Deixe em branco ou não inclua para comentários anônimos
+# test/fixtures/comments.yml
+comment_star_wars_1:
+  name: "Comentarista Entusiasmado"
+  content: "Um clássico atemporal!"
+  movie: the_matrix # <--- MUDANÇA AQUI: Referencia o filme 'the_matrix'
+  user: felipe              # <--- OK
 
-comment_two:
-  content: "Amei a atuação!"
-  movie: movie_a_origem # <-- Referência ao label do filme em movies.yml
-  user: felipe # <-- Referência ao label do usuário em users.yml
+comment_empire_1:
+  name: "Fã de Star Wars"
+  content: "Eu sou seu pai!"
+  movie: the_matrix # <--- MUDANÇA AQUI: Referencia o filme 'the_matrix'
+  user: felipe

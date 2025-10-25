@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_22_055130) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_25_152433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -83,6 +83,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_22_055130) do
     t.boolean "manequim_films"
     t.boolean "vitrine_session"
     t.text "cast"
+    t.text "description"
+    t.date "release_date"
     t.index ["user_id"], name: "index_movies_on_user_id"
   end
 

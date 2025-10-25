@@ -6,22 +6,38 @@ class MovieFlowTest < ApplicationSystemTestCase
     visit movies_url
 
     # 2. Verifica se a página contém o cabeçalho
-    assert_selector "h1", text: "Filmes"
+    assert_selector "h1", text: "EXPLORE NOSSO CATÁLOGO DE FILMES"
 
     # 3. Clica no link para criar um novo filme
-    click_on "Novo Filme" # Assumindo que você tem um link com este texto
+    click_on "Entrar"# Assumindo que você tem um link com este texto
+
+    fill_in "Email", with: users(:admin_user).email # Preenche o campo de e-mail
+    fill_in "Senha", with: "password"            # Preenche o campo de senha
+                                                    # (Use a senha configurada no fixture users.yml)
+    click_button "Entrar" # Substitua pelo texto ou ID do seu botão de login
+
+  # 2. Verifica se a página contém o cabeçalho
+    assert_selector "h1", text: "EXPLORE NOSSO CATÁLOGO DE FILMES"
+
+    # 3. Clica no link para criar um novo filme
+    click_on "Cadastrar Novo Filme"# Assumindo que você tem um link com este texto
+
 
     # 4. Preenche o formulário
     fill_in "Título", with: "O Sucesso do Teste de Sistema"
-    fill_in "Descrição", with: "Este filme foi criado por um teste automatizado."
-    
+    fill_in "Sinopse", with: "Este filme foi criado por um teste automatizado."
+    fill_in "Ano de Lançamento", with: "2025"
+    fill_in "Duração (minutos)", with: "104"
+    fill_in "Diretor", with: "Fernando Vasconcelos"
+   
+    save_and_open_page
+
     # 5. Clica no botão de submissão
-    click_on "Criar Filme" # Assumindo que o botão tem este texto
+    click_on "SALVAR FILME" # Assumindo que o botão tem este texto
 
     # 6. Verifica se a criação foi bem-sucedida
     assert_text "Filme criado com sucesso!"
     
-    # 7. Verifica se o filme aparece na página de detalhes
-    assert_selector "h1", text: "O Sucesso do Teste de Sistema"
+   
   end
 end

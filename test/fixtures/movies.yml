@@ -1,18 +1,34 @@
-# test/fixtures/movies.yml (Exemplo CORRIGIDO)
-movie_o_senhor_dos_aneis:
-  title: "O Senhor dos Anéis"
-  synopsis: "Um hobbit embarca em uma jornada perigosa."
-  release_year: 2001
-  duration: 178
-  director: "Peter Jackson"
-  user: one
-  # ... outros atributos (ex: watch_at_home: true)
+# test/fixtures/movies.yml
+the_matrix: # Este é o LABEL do filme
+  title: "The Matrix"
+  synopsis: "Um programador de computador descobre que a realidade é uma simulação."
+  release_year: 1999
+  duration: 136
+  director: "Lana Wachowski"
+  user: felipe
 
-movie_a_origem:
-  title: "A Origem"
-  synopsis: "Um ladrão de sonhos."
-  release_year: 2010
-  duration: 148
-  director: "Christopher Nolan"
-  user: two
-  # ... outros atributos
+star_wars_new_hope: # <--- ADICIONADO!
+  title: "Star Wars: A New Hope"
+  synopsis: "Uma galáxia muito, muito distante..."
+  release_year: 1977
+  duration: 121
+  director: "George Lucas"
+  user: felipe
+
+empire_strikes_back: # <--- ADICIONADO!
+  title: "Star Wars: The Empire Strikes Back"
+  synopsis: "A saga continua..."
+  release_year: 1980
+  duration: 124
+  director: "Irvin Kershner"
+  user: felipe
+  release_date: 2023-01-15 # Formato YYYY-MM-DD
+
+movie_one: # <--- ADICIONADO (para movie_genres)
+  title: "Filme Teste Um"
+  synopsis: "Uma sinopse qualquer para o filme de teste."
+  release_year: 2020
+  duration: 90
+  director: "Diretor Teste"
+  user: felipe
+  release_date: 2023-01-15 # Formato YYYY-MM-DD

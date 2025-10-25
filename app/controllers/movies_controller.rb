@@ -120,7 +120,7 @@ class MoviesController < ApplicationController
     # IMPORTANTE: Adapte esta lista com todos os campos do seu modelo Movie que
     # podem ser criados ou atualizados pelos formulários.
     def movie_params
-      params.require(:movie).permit(:title, :synopsis, :release_year, :duration, :director, :poster, :cast, genre_ids: [])
+      params.require(:movie).permit(:title, :synopsis, :release_year, :duration, :director, :poster, :description, :cast, genre_ids: [])
     end
 
     # Verifica se o usuário logado é o proprietário do filme.

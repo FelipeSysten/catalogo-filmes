@@ -1,13 +1,13 @@
 # test/fixtures/users.yml (Exemplo CORRIGIDO)
 felipe:
   email: felipe@example.com
-  # Use o método para hash de senha do Devise.
-  # Ex: <%= Devise::Encryptor.digest('password') %>
-  # Ou, se o seu User model tem `has_secure_password`:
-  encrypted_password: <%= Devise::Encryptor.digest('password') %>
-  confirmed_at: <%= Time.current %> # Se você usa confirmação de email
+  encrypted_password: <%= Devise::Encryptor.digest(User,'password') %>
+  
 
 maria:
   email: maria@example.com
-  encrypted_password: <%= Devise::Encryptor.digest('password') %>
-  confirmed_at: <%= Time.current %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+ 
+admin_user:
+  email: admin@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

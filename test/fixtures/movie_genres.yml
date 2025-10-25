@@ -1,9 +1,8 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# test/fixtures/movie_genres.yml
+movie_one_action:
+  movie: the_matrix       # <--- MUDANÇA AQUI: Referencia o filme 'the_matrix'
+  genre: action          # <--- OK
 
-one:
-  movie: one
-  genre: one
-
-two:
-  movie: two
-  genre: two
+movie_one_scifi:
+  movie: the_matrix       # <--- MUDANÇA AQUI: Referencia o filme 'the_matrix'
+  genre: science_fiction # <--- OK
