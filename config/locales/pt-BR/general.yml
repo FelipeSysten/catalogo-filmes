@@ -2,10 +2,6 @@ pt-BR:
   header:
     about: "Sobre"
     movies: "Filmes"
-    watch_at_home: "Assista em Casa"
-    vitrine_session: "Sessão Vitrine"
-    vitrinelab: "VitrineLab"
-    store: "Loja"
     search: "Buscar"
     my_account: "Minha Conta"
     sign_out: "Sair"
@@ -15,3 +11,8 @@ pt-BR:
     languages:
       portuguese: "PT"
       english: "EN"
+    copyright: "&copy; %{year} Maino Filmes. Todos os direitos reservados."
+    links:
+      privacy_policy: "Política de Privacidade"
+      terms_of_use: "Termos de Uso"
+      contact: "Contato"

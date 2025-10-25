@@ -2,10 +2,6 @@ en:
   header:
     about: "About"
     movies: "Movies"
-    watch_at_home: "Watch at Home"
-    vitrine_session: "Showcase Session"
-    vitrinelab: "VitrineLab"
-    store: "Store"
     search: "Search"
     my_account: "My Account"
     sign_out: "Sign Out"
@@ -15,3 +11,9 @@ en:
     languages:
       portuguese: "PT"
       english: "EN"
+  
+    copyright: "&copy; %{year} Maino Films. All rights reserved."
+    links:
+      privacy_policy: "Privacy Policy"
+      terms_of_use: "Terms of Use"
+      contact: "Contact"

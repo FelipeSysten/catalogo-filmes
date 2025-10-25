@@ -1,6 +1,6 @@
 <div class="movie-form-page-container">
   <div class="movie-form-content-wrapper">
-    <h1 class="page-title">Editar Perfil</h1>
+    <h1 class="page-title"><%= t('devise.title_edit') %></h1>
 
     <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -18,35 +18,35 @@
       <% end %>
 
       <div class="field-group">
-        <%= f.label :password, "Senha", class: "form-label" %> <i class="hint-text">(deixe em branco se não quiser alterar)</i><br />
+        <%= f.label :password, t('devise.password'), class: "form-label" %> <i class="hint-text">(<%= t('devise.leave_blank') %>)</i><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
         <% if @minimum_password_length %>
-          <small class="hint-text"><%= @minimum_password_length %> caracteres no mínimo</small>
+          <small class="hint-text"><%= @minimum_password_length %> <%= t('devise.caracteres') %></small>
         <% end %>
       </div>
 
       <div class="field-group">
-        <%= f.label :password_confirmation, "Confirmação de Senha", class: "form-label" %><br />
+        <%= f.label :password_confirmation, t('devise.confirmed_password'), class: "form-label" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
       </div>
 
       <div class="field-group">
-        <%= f.label :current_password, "Senha Atual", class: "form-label" %> <i class="hint-text">(precisamos da sua senha atual para confirmar as alterações)</i><br />
+        <%= f.label :current_password, t('devise.current_password'), class: "form-label" %> <i class="hint-text">( <%= t('devise.confirm_changes') %> )</i><br />
         <%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Atualizar", class: "submit-button" %>
+        <%= f.submit t('devise.update'), class: "submit-button" %>
       </div>
     <% end %>
 
     <div class="back-link-container additional-links">
       <div class="cancel-account-section">
-        <h3>Cancelar minha conta</h3>
-        <p>Insatisfeito(a)? <%= button_to "Excluir minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?", turbo_confirm: "Tem certeza?" }, method: :delete, class: "danger-button" %></p>
+        <h3><%= t('devise.cancel') %></h3>
+        <p>Insatisfeito(a)? <%= button_to t('devise.delete'), registration_path(resource_name), data: { confirm: "Tem certeza?", turbo_confirm: "Tem certeza?" }, method: :delete, class: "danger-button" %></p>
       </div>
 
-      <%= link_to "Voltar", :back, class: "back-button" %>
+      <%= link_to t('devise.back'), :back, class: "back-button" %>
     </div>
   </div>
 </div>

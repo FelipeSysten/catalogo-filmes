@@ -1,10 +1,11 @@
 <footer class="main-footer">
   <div class="footer-content">
-    <p>&copy; <%= Time.now.year %> Maino Filmes. Todos os direitos reservados.</p>
+    <%# Usamos 'year: Time.now.year' para passar o ano como uma variável para a tradução %>
+    <p><%= t('header.copyright', year: Time.now.year) %></p>
     <nav class="footer-nav">
-      <%= link_to "Política de Privacidade", "#", class: "footer-link" %>
-      <%= link_to "Termos de Uso", "#", class:"footer-link" %>
-      <%= link_to "Contato", "#", class:"footer-link" %>
+      <%= link_to t('header.links.privacy_policy'), "#", class: "footer-link" %>
+      <%= link_to t('header.links.terms_of_use'), "#", class:"footer-link" %>
+      <%= link_to t('header.links.contact'), "#", class:"footer-link" %>
     </nav>
   </div>
 </footer>

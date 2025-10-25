@@ -13,11 +13,6 @@
       <div class="filters-container">
         <div class="filter-group">
           <label for="genre-filter"><%= t("movies.index.filter_by_genre") %></label>
-          <% # NOTA: Se Genre.all.map { |g| [g.name, g.id] } for usado, g.name virá do banco de dados.
-             # Para traduzir os nomes dos gêneros, você precisaria de um sistema i18n para o modelo Genre (ex: gem Globalize)
-             # ou chaves explícitas para cada nome de gênero no YAML.
-             # Para os gêneros hardcoded (Ação, Drama, etc.), adicionei chaves genéricas como 'genre_action', que precisarão de entrada nos YAML.
-          %>
           <%= select_tag :genre, options_for_select([
             [t("movies.index.all"), ""]] +
             (defined?(Genre) && Genre.all.any? ? Genre.all.map { |g| [g.name, g.id] } :
@@ -59,12 +54,12 @@
         <div class="movie-info">
           <%= link_to movie.title, movie_path(movie), class:"movie-title" %>
           <p class="movie-meta">
-            <% # A lógica aqui é a mesma: se g.name vem do banco, não é traduzido por I18n.t() automaticamente. %>
+            
             <% genres = movie.respond_to?(:genres) && movie.genres.any? ? movie.genres.map(&:name).join(', ') : t("movies.index.genre_not_informed") %>
             <%= genres %>
             <%= " / #{movie.release_year}" if movie.release_year.present? %>
 
-            <% # Certifica-se de que movie.country existe e o traduz se não estiver presente. %>
+            
             <%= " / #{movie.respond_to?(:country) && movie.country.present? ? movie.country : t('movies.index.country_not_informed')}" if movie.respond_to?(:country) %>
           </p>
           <p class="movie-meta">

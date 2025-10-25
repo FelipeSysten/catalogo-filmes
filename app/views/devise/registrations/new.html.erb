@@ -2,7 +2,7 @@
 
 <div class="movie-form-page-container">
   <div class="movie-form-content-wrapper">
-    <h1 class="page-title">Crie Sua Conta</h1>
+    <h1 class="page-title"><%= t('devise.title_register') %></h1>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "movie-form" }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -13,20 +13,20 @@
       </div>
 
       <div class="field-group">
-        <%= f.label :password, "Senha:", class: "form-label" %>
+        <%= f.label :password, t('devise.password'), class: "form-label" %>
         <% if @minimum_password_length %>
-          <em class="form-hint">(<%= @minimum_password_length %> caracteres mínimos)</em>
+          <em class="form-hint">(<%= @minimum_password_length %> <%= t('devise.caracteres')%>)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
       </div>
 
       <div class="field-group">
-        <%= f.label :password_confirmation, "Confirmar Senha:", class: "form-label" %><br />
+        <%= f.label :password_confirmation, t('devise.confirmed_password'), class: "form-label" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Registrar", class: "submit-button" %>
+        <%= f.submit t('devise.register'), class: "submit-button" %>
       </div>
     <% end %>
 

@@ -1,0 +1,40 @@
+# config/locales/en.yml (ou ajuste a estrutura de pastas conforme seu projeto)
+en:
+  # Translations for general Rails error messages
+  errors:
+    messages:
+      not_saved:
+        one: "1 error prevented this %{resource} from being saved:"
+        other: "%{count} errors prevented this %{resource} from being saved:"
+
+  # Translations for model names
+  activerecord:
+    models:
+      movie: "Movie" # Used in error message and by default form.submit
+
+    # Translations for model attributes (used by form.label)
+    attributes:
+      movie:
+        title: "Title"
+        synopsis: "Synopsis"
+        release_year: "Release Year"
+        duration: "Duration (minutes)"
+        director: "Director"
+        cast: "Cast"
+        poster: "Poster"
+        genre_ids: "Genres" # Genres is an association, but we can give it a friendly label here
+
+  # Specific translations for this form (the prefix `views.movies.form`
+  # is because the partial is in `app/views/movies/_form.html.erb` and we use `t('.key')`)
+  views:
+    movies:
+      form:
+        submit_button: "Save Movie"
+
+footer:
+    # O %{year} será substituído pelo valor passado no t() helper (Time.now.year)
+    copyright: "&copy; %{year} Maino Films. All rights reserved."
+    links:
+      privacy_policy: "Privacy Policy"
+      terms_of_use: "Terms of Use"
+      contact: "Contact"

@@ -1,6 +1,23 @@
-# config/locales/devise.pt-BR.yml
 pt-BR:
   devise:
+    title: "Acesse Sua Conta"
+    title_register: "Criar conta"
+    title_edit: "Editar Perfil"
+    leave_blank: "deixe em branco se não quiser alterar"
+    email: "E-mail:"
+    password: "Senha:"
+    current_password: "Senha Atual"
+    confirm_changes: "precisamos da sua senha atual para confirmar as alterações"
+    remember_me: "Lembrar de mim"
+    forgot_password: "Esqueceu sua senha?"
+    register: "Cadastrar-se"
+    to_enter: "Entrar"
+    caracteres : "caracteres minimos"
+    confirmed_password: "Confirmar Senha"
+    update: "Atualizar"
+    cancel: "Cancelar minha conta"
+    delete: "Excluir minha Conta"
+    back: "Voltar"
     confirmations:
       confirmed: "Sua conta foi confirmada com sucesso."
       send_instructions: "Você receberá um e-mail com instruções sobre como confirmar sua conta em alguns minutos."

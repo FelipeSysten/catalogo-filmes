@@ -1,29 +1,29 @@
 
 <div class="movie-form-page-container">
   <div class="movie-form-content-wrapper">
-    <h1 class="page-title">Acesse Sua Conta</h1>
+    <h1 class="page-title"><%= t('devise.title') %></h1>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "movie-form" }) do |f| %>
 
       <div class="field-group">
         <%= f.label :email, class: "form-label" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: t('devise.email'), class: "form-input" %>
       </div>
 
       <div class="field-group">
-        <%= f.label :password, "Senha:", class: "form-label" %><br />
+        <%= f.label :password, t('devise.password'), class: "form-label" %><br />
         <%= f.password_field :password, autocomplete: "current-password", class: "form-input" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
         <div class="field-group checkbox-item-container">
           <%= f.check_box :remember_me, class: "genre-checkbox" %>
-          <%= f.label :remember_me, "Lembrar de mim", class: "genre-label" %>
+          <%= f.label :remember_me, t('devise.remember_me'), class: "genre-label" %>
         </div>
       <% end %>
 
       <div class="actions">
-        <%= f.submit "Entrar", class: "submit-button" %>
+        <%= f.submit t('devise.to_enter'), class: "submit-button" %>
       </div>
     <% end %>
 

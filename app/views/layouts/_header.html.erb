@@ -1,19 +1,18 @@
 <header class="main-header">
   <div class="header-content">
     <%= link_to root_path, class: "header-logo" do %>
-      <%= image_tag "logo_vitrine.png", alt: "Vitrine Filmes" %> <%# Certifique-se de ter esta imagem em app/assets/images/ %>
+      <%= image_tag "logo_vitrine.png", alt: "Maino Filmes" %> 
     <% end %>
 
     <nav class="main-nav">
-      <%= link_to "Sobre", "#", class: "nav-link" %>
-      <%= link_to "Filmes", movies_path, class: "nav-link active" %> <%# 'active' para indicar a página atual %>
-      <%# Os links "Assista em Casa", "Sessão Vitrine", "VitrineLab", "Loja" foram removidos daqui %>
+      <%= link_to t('header.about'), "#", class: "nav-link" %>
+      <%= link_to t('header.movies'), movies_path, class: "nav-link active" %> <%# 'active' para indicar a página atual %>
     </nav>
 
     <div class="header-actions">
       <div class="search-bar-header">
         <%= form_tag movies_path, method: :get, class: "header-search-form" do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Buscar...", class: "header-search-input" %>
+          <%= text_field_tag :search, params[:search], placeholder: t('header.search'), class: "header-search-input" %>
           <button type="submit" class="header-search-button"><i class="fas fa-search"></i></button>
         <% end %>
       </div>
@@ -27,9 +26,9 @@
         <%= link_to edit_user_registration_path, class: "header-icon", title: "Minha Conta" do %> 
           <i class="fas fa-user-circle"></i>
         <% end %>
-        <%= link_to "Sair", destroy_user_session_path, method: :delete, data: { turbo_confirm: "Tem certeza que deseja sair?" }, class: "user-auth-button" %>
+        <%= link_to t('header.sign_out'), destroy_user_session_path, method: :delete, data: { turbo_confirm: "Tem certeza que deseja sair?" }, class: "user-auth-button" %>
       <% else %>
-        <%= link_to "Entrar", new_user_session_path, class: "user-auth-button" %> <%# Substitua 'new_user_session_path' pela sua rota de login %>
+        <%= link_to t('header.sign_in'), new_user_session_path, class: "user-auth-button" %> <%# Substitua 'new_user_session_path' pela sua rota de login %>
       <% end %>
    <select class="lang-select" onchange="window.location.href = this.value">
   <option value="<%= url_for(locale: 'pt-BR') %>" <%= 'selected' if I18n.locale.to_s == 'pt-BR' %>>
@@ -51,9 +50,9 @@
       <li><%= link_to "Buscar", "#", class: "nav-link" %><i class="fas fa-search"></i></li>
       <% if user_signed_in? %> <%# Lógica para o menu mobile quando o usuário está logado %>
         <li><%= link_to "Minha Conta", edit_user_registration_path, class: "nav-link" %><i class="fas fa-user-circle"></i></li> <%# Substitua 'user_account_path' pela sua rota de perfil do usuário %>
-        <li><%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %><i class="fas fa-sign-out-alt"></i></li> <%# Substitua 'destroy_user_session_path' pela sua rota de logout %>
+        <li><%= link_to t('header.sign_up'), destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %><i class="fas fa-sign-out-alt"></i></li> <%# Substitua 'destroy_user_session_path' pela sua rota de logout %>
       <% else %> <%# Lógica para o menu mobile quando o usuário não está logado %>
-        <li><%= link_to "Entrar", new_user_session_path, class: "nav-link" %><i class="fas fa-sign-in-alt"></i></li> <%# Substitua 'new_user_session_path' pela sua rota de login %>
+        <li><%= link_to t('header.sign_in'), new_user_session_path, class: "nav-link" %><i class="fas fa-sign-in-alt"></i></li> <%# Substitua 'new_user_session_path' pela sua rota de login %>
       <% end %>
     </ul>
   </nav>

@@ -2,6 +2,24 @@
 
 en:
   devise:
+    title: "Access Your Account"
+    title_register: "create account"
+    title_edit: "edit profile"
+    leave_blank: "leave blank if you don't want to change it)"
+    email: "E-mail"
+    password: "Password"
+    current_password: "Current Password"
+    confirm_changes: "we need your current password to confirm the changes"
+    remember_me: "Remember me"
+    forgot_password: "Forgot Password?"
+    register: "Register"
+    to_enter: "To enter"
+    caracteres: "minimum characters"
+    confirmed_password: "Password Confirmed"
+    update: "Update"
+    cancel: "Cancel my Profile"
+    delete: "Delete ny Profile"
+    back: "Back"
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."

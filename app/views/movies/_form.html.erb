@@ -1,7 +1,11 @@
 <%= form_with(model: movie, local: true, class: "movie-form") do |form| %>
   <% if movie.errors.any? %>
     <div id="error_explanation" class="form-errors">
-      <h2><%= pluralize(movie.errors.count, "erro") %> impediu este filme de ser salvo:</h2>
+      
+      <h2><%= I18n.t("errors.messages.not_saved",
+                count: movie.errors.count,
+                resource: movie.class.model_name.human) %>
+      </h2>
       <ul>
         <% movie.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,37 +15,38 @@
   <% end %>
 
   <div class="field-group">
-    <%= form.label :title, "Título:", class: "form-label" %>
+    <%# form.label automaticamente busca a tradução em activerecord.attributes.movie.<attribute> %>
+    <%= form.label :title, class: "form-label" %>
     <%= form.text_field :title, class: "form-input" %>
   </div>
 
   <div class="field-group">
-    <%= form.label :synopsis, "Sinopse:", class: "form-label" %>
+    <%= form.label :synopsis, class: "form-label" %>
     <%= form.text_area :synopsis, class: "form-textarea" %>
   </div>
 
   <div class="field-group">
-    <%= form.label :release_year, "Ano de Lançamento:", class: "form-label" %>
+    <%= form.label :release_year, class: "form-label" %>
     <%= form.number_field :release_year, class: "form-input" %>
   </div>
 
   <div class="field-group">
-    <%= form.label :duration, "Duração (minutos):", class: "form-label" %>
+    <%= form.label :duration, class: "form-label" %>
     <%= form.number_field :duration, class: "form-input" %>
   </div>
 
   <div class="field-group">
-    <%= form.label :director, "Diretor:", class: "form-label" %>
+    <%= form.label :director, class: "form-label" %>
     <%= form.text_field :director, class: "form-input" %>
   </div>
 
   <div class="field-group">
-    <%= form.label :cast, "Elenco:", class: "form-label" %>
+    <%= form.label :cast, class: "form-label" %>
     <%= form.text_area :cast, class: "form-textarea" %>
   </div>
 
   <div class="field-group">
-    <%= form.label :poster, "Pôster:", class: "form-label" %>
+    <%= form.label :poster, class: "form-label" %>
     <%= form.file_field :poster, class: "form-input" %>
     <% if movie.poster.attached? %>
       <div class="current-poster-preview">
@@ -52,7 +57,7 @@
   </div>
 
   <div class="field-group">
-    <%= form.label :genre_ids, "Gêneros:", class: "form-label" %>
+    <%= form.label :genre_ids, class: "form-label" %>
     <div class="genres-checkbox-group">
       <%= form.collection_check_boxes :genre_ids, Genre.all, :id, :name do |b| %>
         <div class="checkbox-item">
@@ -64,6 +69,7 @@
   </div>
 
   <div class="actions">
+   
     <%= form.submit "Salvar Filme", class: "submit-button" %>
   </div>
 <% end %>
