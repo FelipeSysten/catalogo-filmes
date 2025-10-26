@@ -63,7 +63,7 @@ test:
   <<: *default
   database: catalogo_filmes_test
   username: felipe
-  password:  <%= ENV.fetch("DB_PASSWORD_TEST") %>
+  password: <%= ENV.fetch("DB_PASSWORD_TEST", "a_dummy_password_for_test") %>
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
