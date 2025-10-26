@@ -81,7 +81,7 @@ Siga as instruções abaixo para configurar e executar o projeto em seu ambiente
     *Para obter a `RAILS_MASTER_KEY`, verifique o arquivo `config/master.key` (não comite este arquivo!).*
 
 6.  **Crie e configure o banco de dados:**
-    Certifique-se de que seu usuário do PostgreSQL (`felipe`, conforme `config/database.yml`) exista e tenha permissões para criar bancos de dados. Em seguida, execute:
+    Certifique-se de que seu usuário do PostgreSQL (`user`, conforme `config/database.yml`) exista e tenha permissões para criar bancos de dados. Em seguida, execute:
     ```bash
     rails db:create
     rails db:migrate

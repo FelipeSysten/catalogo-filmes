@@ -1,33 +1,27 @@
-// app/javascript/packs/application.js
-
-// --- Inicialização CRÍTICA para o Stimulus (CORRIGIDO E ROBUSTO) ---
 import { Application } from "@hotwired/stimulus";
 
 const application = Application.start();
 
-// Use require.context para carregar automaticamente todos os controladores
-// do diretório app/javascript/controllers
+
 const context = require.context("../controllers", true, /_controller\.js$/);
 
-// Itera sobre todos os controladores encontrados e os registra
+
 context.keys().forEach((filename) => {
-  // Extrai o nome do controlador (e.g., 'movie_search_controller.js' -> 'movie-search')
+
   const identifier = filename
-  .replace(/_controller\.js$/, '') // Remove '_controller.js' do final
-  .replace(/^\.\//, '')             // Remove './' do início
-  .replace(/\//g, '--')           // Substitui '/' por '--' para lidar com subdiretórios (se houver)
-  .replace(/_/g, '-');              // <--- ESTA LINHA CONVERTE snake_case para kebab-case
+  .replace(/_controller\.js$/, '') 
+  .replace(/^\.\//, '')             
+  .replace(/\//g, '--')           
+  .replace(/_/g, '-');             
 
   application.register(identifier, context(filename).default);
   console.log(`Stimulus controller registered: ${identifier}`); 
 });
 
-// --- Seus imports e funções existentes abaixo ---
 
-// Importa o stylesheet principal do Sass
 import '../stylesheets/application.scss';
 
-// Importa as bibliotecas Rails usando sintaxe ES Module
+
 import Rails from '@rails/ujs';
 import Turbolinks from 'turbolinks';
 import * as ActiveStorage from '@rails/activestorage';
@@ -37,9 +31,7 @@ Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
 
-// --- Funções para gerenciar interações da UI (Mobile Menu, Filtros) ---
 
-// Função para configurar o menu mobile
 const setupMobileMenu = () => {
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileNav = document.querySelector('.mobile-nav');
@@ -130,7 +122,7 @@ const setupFilterToggles = () => {
   });
 };
 
-// --- Execução após o carregamento do Turbolinks ---
+
 document.addEventListener('turbolinks:load', () => {
   console.log("Hello from application.js - DOM ready!");
 

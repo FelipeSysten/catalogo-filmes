@@ -1,20 +1,20 @@
-/* app/assets/stylesheets/_base.scss */
 
-/* Variáveis (opcional, mas recomendado para consistência) */
-$primary-dark: #1a1a1a; // Fundo geral
-$secondary-dark: #2a2a2a; // Elementos como cards, filtros
-$tertiary-dark: #0f0f0f; // Para seções como o header hero
+
+
+$primary-dark: #1a1a1a; 
+$secondary-dark: #2a2a2a;
+$tertiary-dark: #0f0f0f; 
 $text-light: #f0f0f0;
 $text-gray: #a0a0a0;
-$accent-color: #e50914; // Um vermelho para destaque, tipo Netflix/Vitrine
+$accent-color: #e50914; 
 $border-color: #444;
 $lighter-border-color: #555;
 
-/* Fontes */
+
 $font-montserrat: 'Montserrat', sans-serif;
 $font-open-sans: 'Open Sans', sans-serif;
 
-/* Reset básico e estilos globais */
+
 body {
   margin: 0;
   font-family: $font-open-sans;

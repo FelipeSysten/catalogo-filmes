@@ -1,6 +1,6 @@
 @use 'base' as *; 
 
-/* --- Header Global --- */
+
 .main-header {
   background-color: $tertiary-dark;
   padding: 15px 0;
@@ -11,22 +11,22 @@
 }
 
 .header-content {
-  @extend .container; // Reutiliza a largura e padding do container
+  @extend .container;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; // Permite quebra de linha em telas pequenas
+  flex-wrap: wrap; 
 }
 
 .header-logo {
   img {
-    height: 35px; // Ajuste conforme o tamanho do seu logo
+    height: 35px; 
     width: auto;
   }
 }
 
 .main-nav {
-  margin: 0 20px; // Espaçamento em desktop
+  margin: 0 20px; 
   ul {
     display: flex;
     list-style: none;
@@ -78,14 +78,14 @@
     padding: 8px 10px;
     color: $text-light;
     outline: none;
-    width: 120px; /* Tamanho inicial */
+    width: 120px; 
     transition: width 0.3s ease;
 
     &::placeholder {
       color: $text-gray;
     }
     &:focus {
-      width: 180px; // Expande ao focar
+      width: 180px; 
     }
   }
   .header-search-button {
@@ -133,7 +133,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-family: $font-open-sans;
-  appearance: none; // Remove o estilo padrão do SO
+  appearance: none; 
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f0f0f0'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 8px center;
@@ -142,7 +142,7 @@
 }
 
 .menu-toggle {
-    display: none; /* Escondido por padrão em desktop */
+    display: none;
     background: none;
     border: none;
     color: $text-light;
@@ -151,7 +151,7 @@
 }
 
 .mobile-nav {
-    display: none; /* Escondido por padrão */
+    display: none; 
     background-color: $tertiary-dark;
     border-top: 1px solid $border-color;
     position: absolute;
@@ -185,7 +185,7 @@
 }
 
 
-/* --- Footer Global --- */
+
 .main-footer {
   background-color: $tertiary-dark;
   color: $text-gray;
@@ -212,18 +212,18 @@
   }
 }
 
-// Media Queries para Header/Footer
+
 @media (max-width: 1024px) {
   .header-content {
     justify-content: center;
     gap: 15px;
   }
   .main-nav {
-    display: none; /* Esconde nav principal em telas menores */
+    display: none; 
   }
   .header-actions {
-    flex-grow: 1; /* Permite que as ações ocupem espaço */
-    justify-content: flex-end; /* Alinha à direita */
+    flex-grow: 1; 
+    justify-content: flex-end; 
     gap: 10px;
   }
   .search-bar-header .header-search-input {
@@ -233,12 +233,12 @@
     }
   }
   .social-icons {
-    display: none; /* Pode esconder ícones sociais para economizar espaço */
+    display: none; 
   }
   .menu-toggle {
-    display: block; /* Mostra o ícone de hambúrguer */
-    order: 1; /* Posiciona o toggle no início */
-    margin-right: auto; /* Empurra os outros elementos para a direita */
+    display: block; 
+    order: 1; 
+    margin-right: auto; 
   }
   .header-logo {
     order: 2;
@@ -250,11 +250,11 @@
 
 @media (max-width: 768px) {
   .header-content {
-    flex-wrap: nowrap; /* Não quebra linha no header principal */
+    flex-wrap: nowrap; 
     justify-content: space-between;
   }
   .header-actions {
-    display: none; /* Esconde todas as ações em mobile para focar no menu hamburger */
+    display: none; 
   }
   .header-logo img {
     height: 30px;
