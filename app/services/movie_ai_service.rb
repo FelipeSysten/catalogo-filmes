@@ -6,13 +6,7 @@ class MovieAIService # Manteremos o nome da classe como MovieAIService para não
 
   BASE_URL = "https://api.themoviedb.org/3" # URL base da API do TMDB
   
-  # Carrega a chave da API de forma segura de credentials.yml.enc
-  API_KEY = Rails.application.credentials.the_movie_db_api_key
-
-  # Verifica se a chave da API está configurada. Essencial para evitar erros em tempo de execução.
-  if API_KEY.nil?
-    raise "A chave THE_MOVIE_DB_API_KEY não está configurada. Por favor, adicione-a em credentials.yml.enc."
-  end
+ API_KEY = ENV.fetch("TMDB_API_KEY")
 
   def self.fetch_movie_data(title)
     puts "[MovieAIService] Buscando filme no TMDB: #{title}"
