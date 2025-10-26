@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   
   def set_locale
 
-    puts "\n" # Apenas para separar as mensagens no terminal
+    puts "\n" 
     puts "DEBUG --- In set_locale method ---"
     puts "DEBUG: I18n.locale ANTES de qualquer alteração = #{I18n.locale.inspect}"
     puts "DEBUG: params[:locale] = #{params[:locale].inspect}"
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     session[:locale] = I18n.locale 
 
     puts "DEBUG: I18n.locale APÓS determinar = #{I18n.locale.inspect}"
-    session[:locale] = I18n.locale # Persiste o locale na sessão
+    session[:locale] = I18n.locale
     puts "DEBUG: session[:locale] APÓS atualizar = #{session[:locale].inspect}"
     puts "DEBUG --- End set_locale method ---"
     puts "\n"
