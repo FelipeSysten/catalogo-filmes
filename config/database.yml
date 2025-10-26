@@ -18,43 +18,15 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: felipe
-  password: <%= ENV.fetch("DB_PASSWORD_TEST") %>
-  host: localhost
-
+  # REMOVIDOS username e password do bloco default.
+  # Eles serão definidos explicitamente em cada ambiente para evitar KeyError.
+  host: localhost 
 
 development:
   <<: *default
   database: catalogo_filmes_development
   username: felipe
-  password:  <%= ENV.fetch("DB_PASSWORD_TEST") %>
-  
-  # The specified database role being used to connect to PostgreSQL.
-  # To create additional roles in PostgreSQL see `$ createuser --help`.
-  # When left blank, PostgreSQL will use the default role. This is
-  # the same name as the operating system user running Rails.
-  #username: catalogo_filmes
-
-  # The password associated with the PostgreSQL role (username).
-  #password:
-
-  # Connect on a TCP socket. Omitted by default since the client uses a
-  # domain socket that doesn't need configuration. Windows does not have
-  # domain sockets, so uncomment these lines.
-  #host: localhost
-
-  # The TCP port the server listens on. Defaults to 5432.
-  # If your server runs on a different port number, change accordingly.
-  #port: 5432
-
-  # Schema search path. The server defaults to $user,public
-  #schema_search_path: myapp,sharedapp,public
-
-  # Minimum log levels, in increasing order:
-  #   debug5, debug4, debug3, debug2, debug1,
-  #   log, notice, warning, error, fatal, and panic
-  # Defaults to warning.
-  #min_messages: notice
+  password: <%= ENV.fetch("DB_PASSWORD_TEST", "your_development_password") %> # Adicionado fallback para desenvolvimento
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -63,7 +35,8 @@ test:
   <<: *default
   database: catalogo_filmes_test
   username: felipe
-  password: <%= ENV.fetch("DB_PASSWORD_TEST", "a_dummy_password_for_test") %>
+  password: <%= ENV.fetch("DB_PASSWORD_TEST", "a_dummy_password_for_test") %> # Já estava correto com fallback
+
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -89,7 +62,13 @@ production:
     <<: *default
     database: catalogo_filmes_production
     username: catalogo_filmes
-    password: <%= ENV["CATALOGO_FILMES_DATABASE_PASSWORD"] %>
+    # Alterado para ENV.fetch para maior segurança.
+    # Em produção, se essa variável não estiver definida, é melhor que o app falhe.
+    password: <%= ENV.fetch("CATALOGO_FILMES_DATABASE_PASSWORD") %>
+    # Adicionado host como variável de ambiente, conforme discutido anteriormente.
+    # O "localhost" é um fallback se DATABASE_HOST_PRODUCTION não estiver definido,
+    # mas em produção você DEVE definir isso.
+    host: <%= ENV.fetch("DATABASE_HOST_PRODUCTION", "localhost") %>
   cache:
     <<: *primary_production
     database: catalogo_filmes_production_cache
