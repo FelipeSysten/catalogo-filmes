@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  # --- Associações ---
+
   belongs_to :user 
   has_many :comments, dependent: :destroy 
   has_one_attached :poster
@@ -8,7 +8,7 @@ class Movie < ApplicationRecord
   has_many :movie_genres, dependent: :destroy 
   has_many :genres, through: :movie_genres
 
-  # --- Validações ---
+ 
   validates :cast, length: { minimum: 2 }, allow_blank: true 
   validates :title, presence: true, length: { minimum: 2 }
   validates :synopsis, presence: true, length: { minimum: 10 }
