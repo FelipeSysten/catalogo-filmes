@@ -1,7 +1,7 @@
 <%= form_with(model: movie, local: true, class: "movie-form") do |form| %>
+
   <% if movie.errors.any? %>
     <div id="error_explanation" class="form-errors">
-      
       <h2><%= I18n.t("errors.messages.not_saved",
                 count: movie.errors.count,
                 resource: movie.class.model_name.human) %>
@@ -14,31 +14,64 @@
     </div>
   <% end %>
 
-  <div class="field-group">
-    <%# form.label automaticamente busca a tradução em activerecord.attributes.movie.<attribute> %>
-    <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, class: "form-input" %>
-  </div>
+  <!-- 1. Adicione o data-controller ao elemento pai dos campos interativos do formulário -->
+  <!-- Note: O Stimulus controller está agora encapsulando os campos que ele vai manipular,
+             mas ainda dentro do form_with principal. -->
+  <div data-controller="movie-search">
 
-  <div class="field-group">
-    <%= form.label :synopsis, class: "form-label" %>
-    <%= form.text_area :synopsis, class: "form-textarea" %>
-  </div>
+    <!-- Mensagem de Erro/Sucesso (controlada pelo Stimulus) -->
+    <div data-movie-search-target="errorMessage" class="alert" style="display:none;"></div>
 
-  <div class="field-group">
-    <%= form.label :release_year, class: "form-label" %>
-    <%= form.number_field :release_year, class: "form-input" %>
-  </div>
+    <!-- 2. Campo de Título (usado para busca) e Botão de Busca -->
+    <div class="form-group row">
+      <%= form.label :title, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-7">
+        <!-- Adicione o data-target para o campo de título. Ele servirá tanto para input quanto para preenchimento. -->
+        <%= form.text_field :title, class: 'form-control form-input', data: { 'movie-search-target': 'title' } %>
+      </div>
+      <div class="col-sm-3">
+        <!-- Adicione o data-action para o botão de busca -->
+        <button type="button"
+                data-action="movie-search#search"
+                data-movie-search-target="searchButton"
+                class="btn btn-info">
+          Buscar por IA
+        </button>
+      </div>
+    </div>
 
-  <div class="field-group">
-    <%= form.label :duration, class: "form-label" %>
-    <%= form.number_field :duration, class: "form-input" %>
-  </div>
+    <!-- 3. Campos que serão preenchidos pela IA (com seus data-targets) -->
+    <!-- Estes são os campos do formulário principal que o Stimulus vai atualizar. -->
 
-  <div class="field-group">
-    <%= form.label :director, class: "form-label" %>
-    <%= form.text_field :director, class: "form-input" %>
-  </div>
+    <div class="field-group">
+      <%= form.label :synopsis, class: "form-label" %>
+      <!-- Ajustado para :synopsis e adicionado data-target -->
+      <%= form.text_area :synopsis, class: 'form-control form-textarea', data: { 'movie-search-target': 'synopsis' } %>
+    </div>
+
+    <div class="field-group">
+      <%= form.label :release_year, class: "form-label" %>
+      <!-- Ajustado para :release_year e adicionado data-target ('releaseYear' para convenção Stimulus) -->
+      <%= form.number_field :release_year, class: 'form-control form-input', data: { 'movie-search-target': 'releaseYear' } %>
+    </div>
+
+    <div class="field-group">
+      <%= form.label :duration, class: "form-label" %>
+      <!-- Adicionado data-target para o campo de duração. ('duration' para convenção Stimulus) -->
+      <%= form.number_field :duration, class: 'form-control form-input', data: { 'movie-search-target': 'duration' } %>
+    </div>
+
+    <div class="field-group">
+      <%= form.label :director, class: "form-label" %>
+      <!-- Adicionado data-target para o campo de diretor ('director' para convenção Stimulus) -->
+      <%= form.text_field :director, class: 'form-control form-input', data: { 'movie-search-target': 'director' } %>
+    </div>
+
+  </div> <!-- Fim do div data-controller="movie-search" -->
+
+  <!-- Os campos abaixo não são preenchidos pela IA conforme o exemplo,
+       mas são parte do formulário e permanecem fora do div data-controller
+       se não forem diretamente afetados pela busca de IA. -->
 
   <div class="field-group">
     <%= form.label :cast, class: "form-label" %>
@@ -69,7 +102,6 @@
   </div>
 
   <div class="actions">
-   
     <%= form.submit "Salvar Filme", class: "submit-button" %>
   </div>
 <% end %>

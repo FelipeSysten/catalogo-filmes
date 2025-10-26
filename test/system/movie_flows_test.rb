@@ -33,7 +33,7 @@ class MovieFlowTest < ApplicationSystemTestCase
     save_and_open_page
 
     # 5. Clica no botão de submissão
-    click_on "SALVAR FILME" # Assumindo que o botão tem este texto
+    click_on "Salvar Filme" # Assumindo que o botão tem este texto
 
     # 6. Verifica se a criação foi bem-sucedida
     assert_text "Filme criado com sucesso!"

@@ -108,6 +108,30 @@ class MoviesController < ApplicationController
     redirect_to movies_url, notice: 'Filme foi excluído com sucesso.'
   end
 
+    # Ação para buscar filmes por IA
+    def search_ai
+      title = params[:title]
+  
+      if title.blank?
+        render json: { error: "O título do filme não pode estar vazio." }, status: :bad_request and return
+      end
+  
+      # Chama o serviço de IA
+      # A ÚNICA ALTERAÇÃO É AQUI: ::MovieAIService
+      movie_data = ::MovieAIService.fetch_movie_data(title) # <-- Linha 119, com ::
+  
+      if movie_data[:error]
+        render json: movie_data, status: :unprocessable_entity
+      else
+        # Retorna os dados do filme em JSON para o frontend
+        render json: movie_data, status: :ok
+      end
+    rescue => e # Captura qualquer erro inesperado e retorna JSON de erro
+      Rails.logger.error "Erro inesperado em MoviesController#search_ai: #{e.message}"
+      render json: { error: "Ocorreu um erro interno no servidor: #{e.message}" }, status: :internal_server_error
+    end
+
+
   private
     # Define o filme (@movie) baseado no ID da URL. Usado por `before_action`.
     def set_movie
@@ -133,4 +157,6 @@ class MoviesController < ApplicationController
         redirect_to movies_path, alert: "Você não tem permissão para editar ou excluir este filme."
       end
     end
+
+
 end
