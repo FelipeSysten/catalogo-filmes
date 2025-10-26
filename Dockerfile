@@ -28,27 +28,44 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
-# Install packages needed to build gems
+# Install packages needed to build gems AND for asset compilation
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
+    apt-get install --no-install-recommends -y \
+        build-essential \
+        git \
+        libpq-dev \
+        libyaml-dev \
+        pkg-config && \
+    # Instala Node.js LTS via NodeSource (CRÍTICO para compilação de assets JS)
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
+    apt-get install -y nodejs && \
+    # Instala Yarn globalmente
+    npm install -g yarn && \
+    # Limpa o cache do APT
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install application gems
+# Install application gems (using Gemfile.lock for caching)
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
+    # Clean up gem cache to reduce image size
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    # Precompile Bootsnap for gems
     bundle exec bootsnap precompile --gemfile
 
 # Copy application code
+# This includes package.json, yarn.lock, app/javascript, app/assets, etc.
 COPY . .
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
-
+# Install JavaScript dependencies and precompile assets
+# These steps are CRITICAL for modern Rails applications with JavaScript bundling.
+# `yarn install` ensures JS dependencies are in place.
+# `bundle exec bootsnap precompile app/ lib/` precompiles app Ruby code.
+# `SECRET_KEY_BASE_DUMMY=1 DB_PASSWORD_TEST=dummy_password bundle exec rails assets:precompile`
+# triggers JavaScript build (e.g., esbuild, rollup) and
+# compiles other assets (CSS, images) and creates digests.
+RUN yarn install --check-files --frozen-lockfile && \
+    bundle exec bootsnap precompile app/ lib/ && \
+    SECRET_KEY_BASE_DUMMY=1 DB_PASSWORD_TEST=dummy_password bundle exec rails assets:precompile
 
 
 # Final stage for app image
