@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
   def create
     # Constrói um novo comentário associado ao @movie, utilizando os parâmetros permitidos.
     @comment = @movie.comments.build(comment_params)
+    @comment.user = current_user 
 
     # Lógica para associar o comentário ao usuário logado, se houver.
     if current_user # 'current_user' é um helper do Devise

@@ -2,11 +2,17 @@
 comment_star_wars_1:
   name: "Comentarista Entusiasmado"
   content: "Um clássico atemporal!"
-  movie: the_matrix # <--- MUDANÇA AQUI: Referencia o filme 'the_matrix'
-  user: felipe              # <--- OK
+  movie: star_wars_new_hope # CORRIGIDO: Referencia o filme 'star_wars_new_hope'
+  user: felipe
 
 comment_empire_1:
   name: "Fã de Star Wars"
   content: "Eu sou seu pai!"
-  movie: the_matrix # <--- MUDANÇA AQUI: Referencia o filme 'the_matrix'
+  movie: empire_strikes_back # CORRIGIDO: Referencia o filme 'empire_strikes_back'
   user: felipe
+
+one: # <--- ADICIONADO: Fixture genérica 'one' para uso em testes
+  name: "Comentário de Teste"
+  content: "Este é um comentário genérico para teste."
+  movie: one # Referencia o filme 'one' que adicionamos acima
+  user: felipe # Garanta que 'felipe' é um usuário válido

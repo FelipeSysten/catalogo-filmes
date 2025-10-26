@@ -80,4 +80,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem 'dotenv-rails'
+  gem 'rails-controller-testing', '~> 1.0'
 end

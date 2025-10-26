@@ -83,6 +83,7 @@ class MoviesController < ApplicationController
   # Tenta criar um novo filme com os parâmetros fornecidos.
   def create
     @movie = current_user.movies.build(movie_params) # Associa o filme ao usuário logado
+    @movie.user = current_user 
 
     if @movie.save
       redirect_to @movie, notice: 'Filme foi criado com sucesso.'

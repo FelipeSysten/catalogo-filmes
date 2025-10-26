@@ -1,13 +1,13 @@
 # test/fixtures/movies.yml
-the_matrix: # Este é o LABEL do filme
+the_matrix:
   title: "The Matrix"
   synopsis: "Um programador de computador descobre que a realidade é uma simulação."
   release_year: 1999
   duration: 136
   director: "Lana Wachowski"
-  user: felipe
+  user: felipe # Assumindo que você tem uma fixture 'felipe' para User
 
-star_wars_new_hope: # <--- ADICIONADO!
+star_wars_new_hope:
   title: "Star Wars: A New Hope"
   synopsis: "Uma galáxia muito, muito distante..."
   release_year: 1977
@@ -15,20 +15,29 @@ star_wars_new_hope: # <--- ADICIONADO!
   director: "George Lucas"
   user: felipe
 
-empire_strikes_back: # <--- ADICIONADO!
+empire_strikes_back:
   title: "Star Wars: The Empire Strikes Back"
   synopsis: "A saga continua..."
   release_year: 1980
   duration: 124
   director: "Irvin Kershner"
   user: felipe
-  release_date: 2023-01-15 # Formato YYYY-MM-DD
+  release_date: 1980-05-21 # Data real de lançamento
 
-movie_one: # <--- ADICIONADO (para movie_genres)
+movie_one: # Este já existia e está ok, pode ser usado por outros testes
   title: "Filme Teste Um"
   synopsis: "Uma sinopse qualquer para o filme de teste."
   release_year: 2020
   duration: 90
   director: "Diretor Teste"
   user: felipe
-  release_date: 2023-01-15 # Formato YYYY-MM-DD
+  release_date: 2020-01-01 # Exemplo de data de lançamento
+
+one: # <--- ADICIONADO: Fixture genérica 'one' para uso em testes
+  title: "one"
+  synopsis: "Sinopse para o filme genérico de teste."
+  release_year: 2022
+  duration: 100
+  director: "Diretor Genérico"
+  user: felipe # Garanta que 'felipe' é um usuário válido
+  release_date: 2022-06-15

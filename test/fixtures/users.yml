@@ -11,3 +11,5 @@ maria:
 admin_user:
   email: admin@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+  
