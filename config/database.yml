@@ -58,17 +58,10 @@ test:
 #
 production:
   primary: &primary_production
-    <<: *default
-    database: catalogo_filmes_production
-    username: catalogo_filmes # Um usuário específico e seguro para produção
-    # Em produção, a senha é CRÍTICA. Usamos ENV.fetch sem um fallback,
-    # o que fará o aplicativo FALHAR se a variável não estiver definida.
-    # Isso é intencional para segurança.
-    password: <%= ENV.fetch("CATALOGO_FILMES_DATABASE_PASSWORD") %>
-    # O host do banco de dados em produção quase nunca é localhost.
-    # Você deve definir DATABASE_HOST_PRODUCTION no Render.
-    # Um fallback para localhost é dado, mas você deve SUBSTITUÍ-LO.
-    host: <%= ENV.fetch("DATABASE_HOST_PRODUCTION", "localhost") %>
+    url: <%= ENV['DATABASE_URL'] %>
+    adapter: postgresql
+    encoding: unicode
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   cache:
     <<: *primary_production
     database: catalogo_filmes_production_cache
