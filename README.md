@@ -1,6 +1,6 @@
 # Catálogo de Filmes
 
-![Página Principal do Catálogo de Filmes](<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5dff0ab9-5ce7-4e66-a11f-ce1d52762dcf" />
+![Página Principal do Catálogo de Filmes]  (<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5dff0ab9-5ce7-4e66-a11f-ce1d52762dcf" />
  )
 
 https://catalogo-filmes-web-a0wr.onrender.com/?locale=pt-BR  <-Link Aplicação
