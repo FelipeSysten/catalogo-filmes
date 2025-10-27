@@ -1,7 +1,9 @@
 # Catálogo de Filmes
 
-![Página Principal do Catálogo de Filmes](https://i.imgur.com/your-screenshot-url.png )
-*Substitua o link acima por uma captura de tela da sua aplicação.*
+![Página Principal do Catálogo de Filmes](<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5dff0ab9-5ce7-4e66-a11f-ce1d52762dcf" />
+ )
+
+https://catalogo-filmes-web-a0wr.onrender.com/?locale=pt-BR  <-Link Aplicação
 
 O **Catálogo de Filmes** é uma aplicação web desenvolvida em Ruby on Rails que permite aos usuários explorar, buscar e comentar sobre uma vasta coleção de filmes. A aplicação foi projetada para ser uma plataforma centralizada para entusiastas de cinema, com funcionalidades de autenticação de usuário, busca filtrada e um sistema de comentários.
 
