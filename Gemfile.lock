@@ -407,7 +407,7 @@ GEM
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     semantic_range (3.1.0)
-    shakapacker (7.2.3)
+    shakapacker (9.2.0)
       activesupport (>= 5.2)
       package_json
       rack-proxy (>= 0.6.1)
@@ -514,7 +514,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   ruby-openai
   selenium-webdriver
-  shakapacker (~> 7.0)
+  shakapacker (~> 9.2)
   shoulda-matchers
   solid_cable
   solid_cache
