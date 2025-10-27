@@ -24,9 +24,11 @@ class Movie < ApplicationRecord
 
 
   def self.search_movies(query)
-    where("title ILIKE :query OR director ILIKE :query OR cast ILIKE :query", query: "%#{query}%")
+    where("LOWER(title) LIKE ? OR LOWER(director) LIKE ? OR LOWER(\"cast\") LIKE ?", 
+          "%#{query.downcase}%", "%#{query.downcase}%", "%#{query.downcase}%")
   end
 
+  
   scope :by_genre, ->(genre_name) { joins(:genres).where(genres: { name: genre_name }) if genre_name.present? }
   scope :by_release_year, ->(year) { where(release_year: year) if year.present? }
 
