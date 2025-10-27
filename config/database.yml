@@ -18,23 +18,20 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost # Assume localhost como padrão, será sobrescrito em produção
+  host: localhost 
 
 development:
   <<: *default
   database: catalogo_filmes_development
-  username: felipe # O usuário do banco de dados para o ambiente de desenvolvimento
-  # Para o ambiente de desenvolvimento, a senha é opcional se não configurada no PostgreSQL local.
-  # Usamos ENV.fetch com um valor padrão para evitar erros se a variável não estiver definida.
-  password: <%= ENV.fetch("DB_PASSWORD_DEVELOPMENT", "") %> # Use ENV["DB_PASSWORD_DEVELOPMENT"] ou vazio
+  username: felipe
+  
+  password: <%= ENV.fetch("DB_PASSWORD_DEVELOPMENT", "") %>
 
 test:
   <<: *default
   database: catalogo_filmes_test
-  username: felipe # O usuário do banco de dados para o ambiente de teste
-  # Para o ambiente de teste, a senha também é opcional para setups locais.
-  # Usamos ENV.fetch com um valor padrão para evitar erros se a variável não estiver definida.
-  password: <%= ENV.fetch("DB_PASSWORD_TEST", "") %> # Use ENV["DB_PASSWORD_TEST"] ou vazio
+  username: felipe 
+  password: <%= ENV.fetch("DB_PASSWORD_TEST", "") %> 
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

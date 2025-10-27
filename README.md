@@ -18,6 +18,7 @@ Este projeto foi desenvolvido utilizando tecnologias modernas do ecossistema Rai
 - **Autenticação de Usuários:** Sistema completo de cadastro, login e gerenciamento de sessão com a gem **Devise**.
 - **Upload de Pôsteres:** Gerenciamento de upload de imagens de pôsteres através do **Active Storage**.
 - **Internacionalização (I18n):** Suporte para múltiplos idiomas (Português e Inglês).
+- **Busca e preenchimento Inteligente:** Possibilidade de buscar e preencher os dados do cadastro do filme por IA (A principio foi implementado OpenIA ao verificar que necessitaria de custo pelos serviços foi mudado para API TMDB sem custos).
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -101,4 +102,4 @@ Siga as instruções abaixo para configurar e executar o projeto em seu ambiente
 Os testes automatizados são essenciais para garantir a qualidade do código. Para executá-los, primeiro configure o banco de dados de teste:
 
 ```bash
-rails db:migrate RAILS_ENV=test
+bundle exec rspec

@@ -1,4 +1,3 @@
-# config/routes.rb
 Rails.application.routes.draw do
  
 
@@ -9,9 +8,9 @@ Rails.application.routes.draw do
 
 
   resources :movies do
-    collection do # <--- Início do bloco de coleção
-      get :search_ai # Rota: /movies/search_ai que mapeia para MoviesController#search_ai
-    end           # <--- Fim do bloco de coleção
+    collection do 
+      get :search_ai 
+    end           
     resources :comments, only: [:create, :destroy]
   end
 
