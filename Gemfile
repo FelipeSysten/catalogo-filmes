@@ -17,7 +17,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 gem 'devise'
 gem 'kaminari'
-gem 'shakapacker', '~> 7.0' 
+gem 'shakapacker', '~> 9.3' 
 gem 'image_processing', '~> 1.2'
 gem 'active_storage_validations'
 gem 'http_accept_language'
